@@ -1,0 +1,164 @@
+---
+import { Image } from "astro:assets";
+import Dave from "./img/testimonials/dave.jpg";
+import Hanna from "./img/testimonials/hanna.jpg";
+import Ish from "./img/testimonials/ish.jpg";
+import Quote from "./img/left-quote.png";
+
+const data = [
+  {
+    testimonial:
+      "This product exceeded my expectations with its remarkable functionality and user-friendly design, truly a game-changer in simplifying daily tasks.",
+    author: "George V. Rios",
+    job: "Charter Owner",
+    image: Dave.src,
+  },
+  {
+    testimonial:
+      "I can confidently say that this product has transformed my life, delivering exceptional performance and unmatched reliability that truly sets it apart in its category.",
+    author: "Patrick K. Little",
+    job: "Business Owner",
+    image: Ish.src,
+  },
+  {
+    testimonial:
+      "Exceptional quality and unparalleled functionality make this product a game-changer – it not only meets but surpasses every expectation, proving to be an indispensable addition to my daily routine.",
+    author: "Patricia I. Barrett",
+    job: "Sales Officer",
+    image: Hanna.src,
+  },
+];
+---
+
+<section>
+  <div class="container">
+    <h2>What Users Saying</h2>
+    <hr />
+    <p>
+      Discover why our customers rave about our exceptional customer service.
+    </p>
+    <div class="testimonials-container">
+      {
+        data.map((e: any) => (
+          <div class="testimonial">
+            <Image src={Quote} alt="quote" class="quote" />
+            <p class="content">{e.testimonial}</p>
+            <div class="author">
+              <img src={e.image} alt="testimonial author" />
+              <div class="title">
+                <h5>{e.author}</h5>
+                <p>{e.job}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background-color: #eef6fd;
+  }
+  .container {
+    padding: 5% 1em;
+
+    @media (max-width: 500px) {
+      padding: 25% 2em;
+    }
+
+    h2 {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    p {
+      max-width: 700px;
+      text-align: center;
+      margin-inline: auto;
+    }
+    hr {
+      max-width: 7em;
+      margin-top: 2%;
+      margin-bottom: 2%;
+      border-color: #fff;
+    }
+  }
+
+  .testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 2em;
+    margin-top: 5em;
+    position: relative;
+
+    @media (max-width: 1090px) {
+      row-gap: 7em;
+    }
+
+    @media (max-width: 500px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .testimonial {
+      position: relative;
+
+      .quote {
+        position: absolute;
+        left: -1em;
+        top: -2em;
+        background: linear-gradient(135deg, var(--green), var(--blue));
+        border-radius: 300px;
+        padding: 1em;
+        width: 25px;
+        height: 25px;
+        z-index: 3;
+      }
+
+      .content {
+        background-color: #fff;
+        padding: 2em 2em 5em 2em;
+        clip-path: polygon(
+          0% 0%,
+          100% 0%,
+          100% 75%,
+          40% 75%,
+          34% 85%,
+          27% 75%,
+          0% 75%
+        );
+        font-size: 14px;
+        color: var(--grey);
+        text-align: left;
+
+        @media (max-width: 500px) {
+          padding-bottom: 8em;
+        }
+      }
+
+      .author {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        margin-top: -1em;
+        position: absolute;
+        margin-left: 1em;
+
+        img {
+          border-radius: 300px;
+          width: 50px;
+          height: 50px;
+        }
+
+        p {
+          font-size: 13px;
+          text-align: left;
+          color: var(--green);
+        }
+      }
+    }
+  }
+</style>

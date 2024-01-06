@@ -1,0 +1,213 @@
+---
+import { Image } from "astro:assets";
+import WebDesign from "./img/services/servers.png";
+import Android from "./img/services/governance.png";
+import Social from "./img/services/analytics.png";
+import Blogging from "./img/services/marketing.png";
+import Ecommerce from "./img/services/data.png";
+import Video from "./img/services/securities.png";
+
+const data = [
+  {
+    title: "Custom Web Design Focused On Increasing Bookings",
+    content:
+      "Our ability to not only design a Website that is appealing but putting more paying clients in your boat is our specialty. It comes from not only knowing web design but also knowing the Fishing business inside and out.",
+    image: WebDesign.src,
+    color: "#80c54d",
+  },
+  {
+    title: "Mobile Site & Application Experts - Apple & Android",
+    content:
+      "Over 70% of the visitors to your website come on mobile devices. Not offering a up to date web experience on mobile devices is a huge mistake. Just because a website is deemed Mobile Friendly by Google doesn’t mean that visitors will respond.",
+    image: Android.src,
+    color: "#4267d1",
+  },
+  {
+    title: "Social Media Integration Google Business - Instagram",
+    content:
+      "There are lots of choices when it comes to mobile media and the hottest most popular platforms aren’t necessarily the most productive for finding Hunting & Fishing clients. We direct our clients to the ones that will help them the most.",
+    image: Social.src,
+    color: "#ca8220",
+  },
+  {
+    title: "Blogging & Posting Service - Content Writing",
+    content:
+      "Improve your overall Google Rankings and Social Media exposure. We offer custom Blogging and Social Media Posting services along with professional content writing if needed.",
+    image: Blogging.src,
+    color: "#b92fb1",
+  },
+  {
+    title: "E-Commerce Functionality - Bookings & Shopping Carts",
+    content:
+      "Do you have tackle or other products you sell? We can help you set up your online store and even find products and apparel that you can sell.",
+    image: Ecommerce.src,
+    color: "#de6742",
+  },
+  {
+    title: "Video Development & Youtube Management",
+    content:
+      "Video is extemely important to have on a website. We offer Video services and can even set up and maintain your Youtube or Vimeo account for you.",
+    image: Video.src,
+    color: "#59eed0",
+  },
+];
+
+import dots from "./img/dots.png";
+---
+
+<section>
+  <div class="container">
+    <h2>Services We Can Help You With</h2>
+    <hr />
+    <p>
+      Empower your journey with our comprehensive services, delivering
+      excellence and innovation to meet your unique needs and exceed your
+      expectations.
+    </p>
+    <div class="services">
+      {
+        data.map((e: any) => (
+          <div class="services-item">
+            <img
+              src={e.image}
+              alt="services"
+              style=`background-color: ${e.color}`
+            />
+            <h3>{e.title}</h3>
+            <p>{e.content}</p>
+            <a class="learn-more" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <>
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </>
+              </svg>
+              Learn More
+            </a>
+            <Image class="dots" src={dots} alt="dots" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background-color: var(--gray-light);
+  }
+  .container {
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+  hr {
+    max-width: 7em;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  h2 {
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  p {
+    max-width: 700px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 5%;
+    grid-gap: 3em;
+    position: relative;
+
+    @media (max-width:980px){
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    
+
+    .services-item {
+      background-color: #fff;
+      padding-top: 7em;
+      position: relative;
+      clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+      padding-bottom: 3em;
+      padding-left: 2em;
+      padding-right: 2em;
+      transition: 0.5s;
+      
+      &:hover{
+        transform: translateY(-10px);
+    }
+
+      p {
+        text-align: left;
+        max-width: 100%;
+        color: var(--grey);
+        margin-bottom: 1em;
+      }
+
+      h3 {
+        font-weight: 600;
+        font-size: clamp(18px, 3vw, 20px);
+        margin-bottom: 15px;
+      }
+
+      img {
+        padding: 1em;
+        margin-bottom: 1em;
+        border-radius: 10px;
+      }
+
+      .dots {
+        position: absolute;
+        top: 0;
+        right:0;
+        opacity: 0.6;
+      }
+
+      a{
+        text-decoration: none;
+      display: flex;
+      align-items: center;
+      color: #44ce6f;
+      transition: 0.5s;
+      padding-left: 2em;
+      position: relative;
+      width: max-content;
+
+        
+
+        svg {
+	position: absolute;
+	left: 0;
+    transition: 0.5s;
+}
+
+&:hover{
+            color:var(--blue);
+            padding-left: 0;
+
+            svg{
+                left: 100%;
+            }
+        }
+      }
+    }
+  }
+</style>

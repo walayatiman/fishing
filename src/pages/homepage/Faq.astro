@@ -1,0 +1,128 @@
+---
+
+---
+
+<section>
+  <div class="container">
+    <h3>Frequently Asked Questions & Honest Answers</h3>
+    <div class="accordion-container">
+      <div class="ac">
+        <h2 class="ac-header">
+          <button type="button" class="ac-trigger"
+            >What does Marketing For Guides exactly do?</button
+          >
+        </h2>
+        <div class="ac-panel">
+          <p class="ac-text">
+            Unlike most marketing companies that put together a pretty website
+            or brochure we actually design a custom marketing system for you
+            that includes marketing programs and techniques that really work.
+            Most of our packages include a custom mobile friendly site,
+            professionally designed marketing collateral, email marketing
+            systems, newsletter marketing programs, etc.
+          </p>
+        </div>
+      </div>
+
+      <div class="ac">
+        <h2 class="ac-header">
+          <button type="button" class="ac-trigger"
+            >Do Your Marketing System Really Work?</button
+          >
+        </h2>
+        <div class="ac-panel">
+          <p class="ac-text">
+            Marketing systems only work if the owner of the business is
+            committed to help make them work. For example, having business cards
+            printed is a simple marketing system … but if you don’t hand them
+            out they will never work for you just setting in a drawer in your
+            office. With that said, you will be hard pressed to find marketing
+            systems that works as well as ours does for the investment of time
+            and money that it will cost you.
+          </p>
+        </div>
+      </div>
+
+      <div class="ac">
+        <h2 class="ac-header">
+          <button type="button" class="ac-trigger"
+            >Are you some type of booking agency or company that will try and
+            sell me leads?</button
+          >
+        </h2>
+        <div class="ac-panel">
+          <p class="ac-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Absolutely
+            not, how does the saying go “Give a man a fish and feed him for a
+            day, teach a man to fish and feed him for a life time”. Your custom
+            designed marketing system generates leads your your business only.
+            These leads are never shared with any one else.
+          </p>
+        </div>
+      </div>
+
+      <div class="ac">
+        <h2 class="ac-header">
+          <button type="button" class="ac-trigger"
+            >Why should we listen to you .... what kind of experience do you
+            have?</button
+          >
+        </h2>
+        <div class="ac-panel">
+          <p class="ac-text">
+            We have over 30 years of marketing/sales experience and are experts
+            in utilizing technology to grow a business. We have personally
+            generated over 10 million dollars in sales utilizing the techniques
+            and tools we offer our clients.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    padding-top: 10%;
+    padding-bottom: 10%;
+
+    @media (max-width: 500px) {
+      padding-top: 25%;
+      padding-bottom: 25%;
+    }
+
+    h3 {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2em;
+    }
+
+    h2 {
+      button {
+        font-family: inherit !important;
+      }
+    }
+
+    .accordion-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2em;
+
+      @media (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      p {
+        font-family: inherit !important;
+      }
+    }
+  }
+</style>
+
+<script>
+  import Accordion from "accordion-js";
+  import "accordion-js/dist/accordion.min.css";
+
+  new Accordion(".accordion-container");
+</script>

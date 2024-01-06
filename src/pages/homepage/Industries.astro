@@ -1,0 +1,116 @@
+---
+import { Image } from "astro:assets";
+import Overlay from "./img/overlay.png";
+---
+
+<section>
+  <div class="container">
+    <h2>Industries We Serve</h2><hr /><p>
+      We proudly serve a diverse range of industries, including technology,
+      healthcare, finance, manufacturing, education, and retail, providing
+      tailored solutions to meet the unique needs and challenges of each sector.
+    </p>
+
+    <div class="industries">
+      <div class="industry">
+        <h3>Charters</h3>
+      </div><div class="industry">
+        <h3>Boat Rental</h3>
+      </div><div class="industry">
+        <h3>Hunting</h3>
+      </div><div class="industry">
+        <h3>Fishing</h3>
+      </div><div class="industry">
+        <h3>Marketing</h3>
+      </div><div class="industry">
+        <h3>Podcasts</h3>
+      </div>
+    </div>
+  </div>
+  <div class="overlay-layer">
+    <Image src={Overlay} alt="overlay" />
+  </div>
+</section>
+
+<style>
+  section {
+    background: linear-gradient(135deg, var(--blue), var(--green));
+    position: relative;
+    overflow: hidden;
+  }
+  .container {
+    padding: 5% 1em;
+    color: #fff;
+
+    @media (max-width: 500px) {
+      padding: 25% 2em;
+    }
+
+    h2 {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    p {
+      max-width: 700px;
+      text-align: center;
+      margin-inline: auto;
+    }
+    hr {
+      max-width: 7em;
+      margin-top: 2%;
+      margin-bottom: 2%;
+      border-color: #fff;
+    }
+  }
+
+  .overlay-layer {
+    width: max-content;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .industries {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    margin-top: 5em;
+    grid-gap: 1em;
+
+    .industry {
+      background-color: #e3e3e3;
+      padding: 1em;
+      border-radius: 10px;
+      position: relative;
+      z-index: 1;
+      color: var(--green);
+      font-size: 20px;
+      font-weight: bold;
+      transition: 0.5s;
+
+      &::before {
+        background-color: var(--blue);
+        content: "";
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: 0.5s;
+        z-index: -1;
+        width: 0;
+        border-radius: 10px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+  }
+</style>

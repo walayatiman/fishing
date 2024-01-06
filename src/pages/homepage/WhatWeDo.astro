@@ -1,0 +1,124 @@
+---
+import Myfirstsize from "../Layouts/Myfirstsize.astro";
+import WebDesign from "./img/coding.png";
+import Mobile from "./img/conversation.png";
+import Social from "./img/flowchart.png";
+import Blogging from "./img/planning.png";
+import Ecommerce from "./img/online-shopping.png";
+import Videoz from "./img/video.png";
+
+const data = [
+  {
+    title: "Branding",
+    content:
+      "Elevate your brand with our comprehensive and tailored branding services, crafting a distinctive identity that captivates your audience and sets you apart in the competitive market.",
+    image: WebDesign.src,
+  },
+  {
+    title: "Analytics",
+    content:
+      "Unlock actionable insights and maximize your business potential with our cutting-edge analytics services, empowering you to make informed decisions and drive measurable success.",
+    image: Mobile.src,
+  },
+  {
+    title: "Technology",
+    content:
+      "Revolutionize your operations with our suite of modern tech tools services, designed to streamline processes, boost efficiency, and propel your business into the digital future.",
+    image: Social.src,
+  },
+];
+---
+
+<Myfirstsize className="what-we-do">
+  <div class="services">
+    <div class="services-content">
+      <h2>What we do</h2>
+      <hr />
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+    <div class="services-items">
+      {
+        data.map((e: any) => (
+          <div class="services-item">
+            <div class="img-container">
+              <img src={e.image} alt="service images" />
+            </div>
+            <h3>{e.title}</h3>
+            <p>{e.content}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Myfirstsize>
+
+<style>
+  .services {
+    padding: 10% 0;
+
+    .services-content {
+      h2 {
+        font-size: clamp(1.7em, 7vw, 2.5em);
+        font-weight: bold;
+        text-align: center;
+      }
+
+      hr {
+        max-width: 7em;
+        margin-top: 2%;
+        margin-bottom: 2%;
+      }
+
+      p {
+        text-align: center;
+        max-width: 30em;
+        margin: 0 auto;
+      }
+    }
+
+    .services-items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5em;
+      margin-top: 10%;
+
+      @media (max-width: 810px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 460px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .services-item {
+        .img-container {
+          background: linear-gradient(135deg, var(--green), var(--blue));
+          width: max-content;
+          padding: 2em;
+          margin-inline: auto;
+          margin-bottom: 1em;
+          border-radius: 10px;
+
+          img {
+            max-width: 50px;
+          }
+        }
+        h3 {
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 15px;
+          max-width: 15em;
+          margin-inline: auto;
+          font-size: 1.4em;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,146 @@
+---
+import { Image } from "astro:assets";
+import portraitOne from "./img/portraits/portrait.png";
+import portraitTwo from "./img/portraits/portrait2.png";
+import portraitThree from "./img/portraits/portraitThree.png";
+import portraitFour from "./img/portraits/portraitFour.png";
+---
+
+<section>
+  <div class="container">
+    <h2>Our Awesome Team</h2><p>
+      Our team is a dynamic and collaborative group of individuals driven by a
+      shared passion for fishing. Comprising talented professionals with diverse
+      backgrounds and skill sets, we bring a wealth of experience to the table
+    </p>
+    <div class="team-container">
+      <div class="team-member">
+        <Image src={portraitOne} alt="team member" />
+        <div class="info">
+          <h4>Josh Butler</h4>
+          <p>Founder</p>
+        </div>
+        <p>
+          The visionary behind the app, the founder brings a wealth of
+          experience and expertise to the table.
+        </p>
+      </div>
+      <div class="team-member">
+        <Image src={portraitTwo} alt="team member" />
+        <div class="info">
+          <h4>Janny Coltler</h4>
+          <p>Software Designer</p>
+        </div>
+        <p>
+          Melding artistic flair with technical expertise, the web designer
+          transforms concepts into captivating online experiences.
+        </p>
+      </div>
+      <div class="team-member">
+        <Image src={portraitThree} alt="team member" />
+        <div class="info">
+          <h4>Fay Kroger</h4>
+          <p>Marketing</p>
+        </div>
+        <p>
+          It's not just about selling; marketing is the process of building
+          relationships, fostering trust, and creating a lasting impression in
+          the minds of consumers.
+        </p>
+      </div>
+      <div class="team-member">
+        <Image src={portraitFour} alt="team member" />
+        <div class="info">
+          <h4>Ed Davis</h4>
+          <p>System Designer</p>
+        </div>
+        <p>
+          With a focus on scalability and sustainability, system designers
+          create frameworks that can adapt and evolve to meet the changing needs
+          of an organization or project.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background-color: #f9f6f6;
+
+    .container {
+      padding: 5% 1em;
+
+      @media (max-width: 500px) {
+        padding: 25% 1em;
+      }
+
+      h2 {
+        font-size: clamp(20px, 3vw, 30px);
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 1em;
+      }
+
+      p {
+        max-width: 700px;
+        text-align: center;
+        margin-inline: auto;
+      }
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 2em;
+      margin-top: 5em;
+
+      @media (max-width: 1104px) {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+      .team-member {
+        background-color: #fff;
+        padding: 2em;
+        text-align: center;
+        transition: all ease-in-out 0.5s;
+
+        &:hover {
+          box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+          .info {
+            border-radius: 0;
+          }
+        }
+
+        img {
+          border-radius: 300px;
+          max-width: 150px;
+          object-fit: cover;
+          max-height: 150px;
+        }
+
+        .info {
+          background: linear-gradient(135deg, #23bdb8, #43e794);
+          padding: 1em;
+          color: #fff;
+          border-radius: 300px;
+          margin-top: 1em;
+          transition: all ease-in-out 0.25s;
+
+          h4 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+          p {
+            margin: 0;
+          }
+        }
+
+        p {
+          margin-top: 2em;
+          line-height: 1.7em;
+        }
+      }
+    }
+  }
+</style>

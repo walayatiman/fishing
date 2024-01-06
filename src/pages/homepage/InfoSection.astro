@@ -1,0 +1,120 @@
+---
+import Captain from "./img/captain.webp";
+import Charter from "./img/charter.webp";
+
+import { Image } from "astro:assets";
+import Button from "../../components/Button.astro";
+---
+
+<section>
+  <div class="container">
+    <div class="img-container">
+      <Image src={Captain} alt="captain" />
+      <Image src={Charter} alt="charter" />
+    </div>
+    <div class="content-container">
+      <h3>Fishing Guides, Lodges & Outfitters Get More Bookings!</h3>
+      <p>
+        By implementing our simple mobile marketing systems and technology in
+        their businesses. Once in place it then runs on autopilot throughout the
+        year
+      </p>
+      <Button link="#" title="discover now" />
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background: linear-gradient(135deg, var(--blue), var(--green));
+    position: relative;
+
+    .container {
+      padding-top: 5%;
+      padding-bottom: 5%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 4em;
+      position: relative;
+
+      @media (max-width: 767px) {
+        padding-top: 15%;
+        padding-bottom: 15%;
+      }
+
+      @media (max-width: 530px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .img-container {
+        position: relative;
+        min-height: 400px;
+
+        @media (max-width: 630px) {
+          min-height: 300px;
+        }
+
+        @media (max-width: 530px) {
+          min-height: 400px;
+        }
+        img {
+          width: 100%;
+          object-fit: cover;
+          max-width: 350px;
+          height: 350px;
+          position: absolute;
+
+          @media (max-width: 940px) {
+            max-width: 300px;
+            height: 300px;
+          }
+          @media (max-width: 767px) {
+            max-width: 250px;
+            height: 250px;
+          }
+          @media (max-width: 630px) {
+            max-width: 200px;
+            height: 200px;
+          }
+
+          @media (max-width: 530px) {
+            max-width: 300px;
+            height: 300px;
+          }
+
+          @media (max-width: 375px) {
+            max-width: 250px;
+            height: 250px;
+          }
+          &:first-child {
+            bottom: 0;
+            right: 0;
+            z-index: 2;
+          }
+
+          &:last-child {
+            top: 0;
+            left: 0;
+          }
+        }
+      }
+
+      .content-container {
+        color: #fff;
+        h3 {
+          font-size: clamp(1.4em, 3vw, 2em);
+          font-weight: bold;
+        }
+
+        p {
+          font-size: 16px;
+          margin-top: 2em;
+        }
+
+        a {
+          margin-top: 2em;
+        }
+      }
+    }
+  }
+</style>

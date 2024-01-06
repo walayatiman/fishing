@@ -1,0 +1,205 @@
+---
+import Myfirstsize from "../Layouts/Myfirstsize.astro";
+import { Image } from "astro:assets";
+import HeroImg from "./img/hero.webp";
+import Business from "./img/business.png";
+import Startup from "./img/startup.png";
+import Program from "./img/program.png";
+import Button from "../../components/Button.astro";
+---
+
+<Myfirstsize bg={HeroImg.src} className="hero-container">
+  <div class="hero-content">
+    <div class="content-container">
+      <h1>Marketing For Guides</h1>
+      <h2>Outdoor Marketing Agency</h2>
+      <p>
+        We specialize in creating custom web solutions that not only showcase
+        the uniqueness of your business but also connect you with the local
+        community. Elevate your brand and reach new heights with our tailored
+        web design services.
+      </p>
+      <Button link="#" title="get started" />
+    </div>
+    <div class="info-container">
+      <div class="info-content-container">
+        <Image src={Program} alt="service icons" />
+
+        <div class="content-info">
+          <h3>Custom Website Design</h3>
+          <p>
+            Our team of talented designers brings creativity and functionality
+            together to deliver bespoke websites that align perfectly with your
+            brand identity.
+          </p>
+        </div>
+      </div>
+      <div class="info-content-container">
+        <Image src={Business} alt="service icons" />
+        <div class="content-info">
+          <h3>Business visibility</h3>
+          <p>
+            Our team is familiar with the unique needs and preferences of your
+            community, ensuring that your website resonates with your local and
+            national audience.
+          </p>
+        </div>
+      </div>
+      <div class="info-content-container">
+        <Image src={Startup} alt="service icons" />
+        <div class="content-info">
+          <h3>SEO and Rankings</h3>
+          <p>
+            We specialize in crafting websites that not only captivate your
+            audience but also excel in search engine rankings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Myfirstsize>
+
+<style>
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+
+    @media (max-width: 500px) {
+      height: auto;
+      padding-top: 15%;
+      padding-bottom: 15%;
+    }
+
+    .content-container {
+      max-width: 50em;
+      margin-bottom: 10%;
+      color: var(--gray-light);
+
+      p {
+        margin-bottom: 1em;
+      }
+    }
+  }
+  h1 {
+    font-size: clamp(1.6em, 7vw, 4em);
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: clamp(1em, 7vw, 1.8em);
+    font-weight: 500;
+    margin-bottom: 1em;
+  }
+
+  .info-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .info-content-container {
+      display: flex;
+      gap: 15px;
+      position: relative;
+      padding: 2em;
+      border: 1px dashed #687b6f;
+      background-color: rgba(30, 30, 30, 0.8);
+      color: var(--gray-light);
+      border-radius: 5px;
+
+      @media (max-width: 1024px) {
+        flex-direction: column;
+      }
+      &::before {
+        background: linear-gradient(135deg, var(--blue), var(--green));
+        content: "";
+        border-radius: 5px;
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: -1;
+        transition: all ease-in-out 0.15s;
+      }
+
+      &:hover {
+        background-color: rgba(30, 30, 30, 0);
+
+        &::before {
+          opacity: 1;
+        }
+      }
+      img {
+        max-width: 45px;
+        object-fit: contain;
+        height: max-content;
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 25%;
+      }
+      .circle {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: -12px;
+        top: -13px;
+        border-radius: 300px;
+        max-width: 70px;
+        max-height: 70px;
+        z-index: 3;
+      }
+
+      .circle-one {
+        background-color: var(--gray-light);
+      }
+
+      .circle-two {
+        background-color: var(--dark-grey);
+      }
+      .circle-three {
+        background-color: var(--gray-light);
+      }
+
+      .content-info {
+        padding-left: 20px;
+
+        @media (max-width: 1024px) {
+          padding-left: 0;
+        }
+      }
+    }
+
+    h3 {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+  window.onload = function () {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".hero-content",
+          start: "top 20%",
+        },
+      })
+      .fromTo(".content-container h1", { y: -50 }, { y: 0 });
+  };
+</script>
