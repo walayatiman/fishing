@@ -2,7 +2,7 @@
 title: "My First Blog Post"
 description: "This is the first post of my new Astro blog."
 author: "Astro Learner"
-heroImage: ../../img/post1-img1.jpg
+heroImage: ../../img/post1-img1.webp
 ---
 
 ## The security risks of changing package owners
@@ -17,9 +17,9 @@ Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro qui
 
 <div class="images">
 
-![Alt Text](../../img/post1-img1.jpg "a title")
-![Alt Text](../../img/post1-img2.jpg "a title")
-![Alt Text](../../img/post1-img3.jpg "a title")</div>
+![Alt Text](../../img/post1-img1.webp "a title")
+![Alt Text](../../img/post1-img2.webp "a title")
+![Alt Text](../../img/post1-img3.webp "a title")</div>
 
 1. **Installing Astro**: First, I created a new Astro project and set up my online accounts.
 
