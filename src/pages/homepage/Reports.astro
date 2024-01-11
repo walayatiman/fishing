@@ -1,5 +1,11 @@
 ---
+import { Picture } from "astro:assets";
+import { getCollection, getEntry } from "astro:content";
+import { Image } from "astro:assets";
 
+const blogItems = await getCollection("blog", ({ data }) => {
+  return data;
+});
 ---
 
 <section>
@@ -8,34 +14,123 @@
       In our most recent update, we delve into the exciting developments and
       noteworthy achievements.
     </p>
+    <div class="blog-container">
+      {
+        blogItems.map((post) => (
+          <div class="single-blog">
+            <img src={post.data.heroImage.src} alt="featured image" />{" "}
+            <div class="data-info">
+              <p class="author">{post.data.author} / </p>
+              <h2>{post.data.title}</h2>
+              <p>{post.data.description}</p>
+              <a href={`/blog/${post.slug}`}>
+                read more{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <>
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </>
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
+  <div></div>
+
+  <style>
+    .container {
+      padding: 5% 1em;
+
+      @media (max-width: 500px) {
+        padding: 25% 2em;
+      }
+
+      h2 {
+        font-size: clamp(20px, 3vw, 30px);
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 1em;
+      }
+
+      p {
+        max-width: 700px;
+        text-align: center;
+        margin-inline: auto;
+      }
+      hr {
+        max-width: 7em;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        border-color: #fff;
+      }
+
+      .blog-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 2em;
+        margin-top: 4em;
+
+        .single-blog {
+          background-color: #f4f4f4;
+          border-radius: 10px;
+          overflow: hidden;
+          padding-bottom: 2em;
+          img {
+            width: 100%;
+          }
+
+          .data-info {
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 5%;
+            p,
+            h2 {
+              text-align: left;
+            }
+
+            p {
+              color: #6084a4;
+            }
+
+            .author {
+              font-size: 14px;
+            }
+
+            a {
+              color: var(--green);
+              text-decoration: none;
+              font-size: 14px;
+              text-transform: capitalize;
+              display: flex;
+              gap: 5px;
+              margin-top: 10px;
+              transition: 0.5s;
+              font-weight: bold;
+
+              &:hover {
+                color: var(--blue);
+              }
+
+              svg {
+                max-width: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+  </style>
 </section>
-
-<style>
-  .container {
-    padding: 5% 1em;
-
-    @media (max-width: 500px) {
-      padding: 25% 2em;
-    }
-
-    h2 {
-      font-size: clamp(20px, 3vw, 30px);
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 1em;
-    }
-
-    p {
-      max-width: 700px;
-      text-align: center;
-      margin-inline: auto;
-    }
-    hr {
-      max-width: 7em;
-      margin-top: 2%;
-      margin-bottom: 2%;
-      border-color: #fff;
-    }
-  }
-</style>

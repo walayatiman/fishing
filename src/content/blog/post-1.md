@@ -1,4 +1,8 @@
 ---
+title: "My First Blog Post"
+description: "This is the first post of my new Astro blog."
+author: "Astro Learner"
+heroImage: ../../img/post1-img1.jpg
 ---
 
 ## The security risks of changing package owners

@@ -1,0 +1,1 @@
+export const GENERATE_SLUG_FROM_TITLE = true
