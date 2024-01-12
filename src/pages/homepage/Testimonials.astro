@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import Dave from "./img/testimonials/dave.webp";
 import Hanna from "./img/testimonials/hanna.webp";
 import Ish from "./img/testimonials/ish.webp";
@@ -11,21 +11,21 @@ const data = [
       "This product exceeded my expectations with its remarkable functionality and user-friendly design, truly a game-changer in simplifying daily tasks.",
     author: "George V. Rios",
     job: "Charter Owner",
-    image: Dave.src,
+    image: Dave,
   },
   {
     testimonial:
       "I can confidently say that this product has transformed my life, delivering exceptional performance and unmatched reliability that truly sets it apart in its category.",
     author: "Patrick K. Little",
     job: "Business Owner",
-    image: Ish.src,
+    image: Ish,
   },
   {
     testimonial:
       "Exceptional quality and unparalleled functionality make this product a game-changer – it not only meets but surpasses every expectation, proving to be an indispensable addition to my daily routine.",
     author: "Patricia I. Barrett",
     job: "Sales Officer",
-    image: Hanna.src,
+    image: Hanna,
   },
 ];
 ---
@@ -50,11 +50,12 @@ const data = [
             />
             <p class="content">{e.testimonial}</p>
             <div class="author">
-              <img
+              <Picture
                 src={e.image}
                 alt="testimonial author"
                 width="50"
                 height="50"
+                formats={["avif", "webp"]}
               />
               <div class="title">
                 <h5>{e.author}</h5>
