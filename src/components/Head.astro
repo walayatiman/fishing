@@ -1,5 +1,6 @@
 ---
 const { title } = Astro.props;
+import faviconSvg from "../img/favicon.svg";
 ---
 
 <head>
@@ -11,6 +12,8 @@ const { title } = Astro.props;
   />
   <meta name="keywords" content="fishing, charters, marketing, ..." />
   <meta name="author" content="Jevan" />
-  <link rel="icon" type="image/x-icon" href="../../public/favicon.svg" />
+
+  <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
+
   <title>{title} | Fishing as a business</title>
 </head>
