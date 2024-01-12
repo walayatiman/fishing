@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import WebDesign from "./img/services/servers.webp";
 import Android from "./img/services/governance.webp";
 import Social from "./img/services/analytics.webp";
@@ -12,47 +12,48 @@ const data = [
     title: "Custom Web Design Focused On Increasing Bookings",
     content:
       "Our ability to not only design a Website that is appealing but putting more paying clients in your boat is our specialty. It comes from not only knowing web design but also knowing the Fishing business inside and out.",
-    image: WebDesign.src,
+    image: WebDesign,
     color: "#80c54d",
   },
   {
     title: "Mobile Site & Application Experts - Apple & Android",
     content:
       "Over 70% of the visitors to your website come on mobile devices. Not offering a up to date web experience on mobile devices is a huge mistake. Just because a website is deemed Mobile Friendly by Google doesn’t mean that visitors will respond.",
-    image: Android.src,
+    image: Android,
     color: "#4267d1",
   },
   {
     title: "Social Media Integration Google Business - Instagram",
     content:
       "There are lots of choices when it comes to mobile media and the hottest most popular platforms aren’t necessarily the most productive for finding Hunting & Fishing clients. We direct our clients to the ones that will help them the most.",
-    image: Social.src,
+    image: Social,
     color: "#ca8220",
   },
   {
     title: "Blogging & Posting Service - Content Writing",
     content:
       "Improve your overall Google Rankings and Social Media exposure. We offer custom Blogging and Social Media Posting services along with professional content writing if needed.",
-    image: Blogging.src,
+    image: Blogging,
     color: "#b92fb1",
   },
   {
     title: "E-Commerce Functionality - Bookings & Shopping Carts",
     content:
       "Do you have tackle or other products you sell? We can help you set up your online store and even find products and apparel that you can sell.",
-    image: Ecommerce.src,
+    image: Ecommerce,
     color: "#de6742",
   },
   {
     title: "Video Development & Youtube Management",
     content:
       "Video is extemely important to have on a website. We offer Video services and can even set up and maintain your Youtube or Vimeo account for you.",
-    image: Video.src,
+    image: Video,
     color: "#59eed0",
   },
 ];
 
 import dots from "./img/dots.webp";
+import Index from "../index.astro";
 ---
 
 <section>
@@ -68,11 +69,12 @@ import dots from "./img/dots.webp";
       {
         data.map((e: any) => (
           <div class="services-item">
-            <img
+            <Image
               src={e.image}
               alt="services"
-              style=`background-color: ${e.color}`
-              width="82" height="77"
+              style={`background-color: ${e.color}`}
+              width="50"
+              height="50"
             />
             <h3>{e.title}</h3>
             <p>{e.content}</p>
@@ -136,11 +138,9 @@ import dots from "./img/dots.webp";
     grid-gap: 3em;
     position: relative;
 
-    @media (max-width:980px){
+    @media (max-width: 980px) {
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
-
-    
 
     .services-item {
       background-color: #fff;
@@ -151,10 +151,10 @@ import dots from "./img/dots.webp";
       padding-left: 2em;
       padding-right: 2em;
       transition: 0.5s;
-      
-      &:hover{
+
+      &:hover {
         transform: translateY(-10px);
-    }
+      }
 
       p {
         text-align: left;
@@ -178,35 +178,33 @@ import dots from "./img/dots.webp";
       .dots {
         position: absolute;
         top: 0;
-        right:0;
+        right: 0;
         opacity: 0.6;
       }
 
-      a{
+      a {
         text-decoration: none;
-      display: flex;
-      align-items: center;
-      color: #44ce6f;
-      transition: 0.5s;
-      padding-left: 2em;
-      position: relative;
-      width: max-content;
-
-        
+        display: flex;
+        align-items: center;
+        color: #44ce6f;
+        transition: 0.5s;
+        padding-left: 2em;
+        position: relative;
+        width: max-content;
 
         svg {
-	position: absolute;
-	left: 0;
-    transition: 0.5s;
-}
+          position: absolute;
+          left: 0;
+          transition: 0.5s;
+        }
 
-&:hover{
-            color:var(--blue);
-            padding-left: 0;
+        &:hover {
+          color: var(--blue);
+          padding-left: 0;
 
-            svg{
-                left: 100%;
-            }
+          svg {
+            left: 100%;
+          }
         }
       }
     }
