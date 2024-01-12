@@ -41,10 +41,21 @@ const data = [
       {
         data.map((e: any) => (
           <div class="testimonial">
-            <Image src={Quote} alt="quote" class="quote" />
+            <Image
+              src={Quote}
+              alt="quote"
+              class="quote"
+              width="50"
+              height="50"
+            />
             <p class="content">{e.testimonial}</p>
             <div class="author">
-              <img src={e.image} alt="testimonial author" />
+              <img
+                src={e.image}
+                alt="testimonial author"
+                width="50"
+                height="50"
+              />
               <div class="title">
                 <h5>{e.author}</h5>
                 <p>{e.job}</p>
