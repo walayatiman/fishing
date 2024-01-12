@@ -18,7 +18,12 @@ const blogItems = await getCollection("blog", ({ data }) => {
       {
         blogItems.map((post) => (
           <div class="single-blog">
-            <img src={post.data.heroImage.src} alt="featured image" />{" "}
+            <img
+              src={post.data.heroImage.src}
+              alt="featured image"
+              width="600"
+              height="300"
+            />
             <div class="data-info">
               <p class="author">{post.data.author} / </p>
               <h2>{post.data.title}</h2>
@@ -90,6 +95,7 @@ const blogItems = await getCollection("blog", ({ data }) => {
           padding-bottom: 2em;
           img {
             width: 100%;
+            object-fit: cover;
           }
 
           .data-info {
