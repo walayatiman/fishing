@@ -2,9 +2,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-window.onload = function () {
-  console.log("HELLLO");
-};
 
 gsap.to(".first", {
   delay: 0.2,
