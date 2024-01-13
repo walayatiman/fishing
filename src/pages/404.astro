@@ -1,5 +1,56 @@
 ---
-
+import "../styles/global.css";
 ---
 
-<h2>page not found</h2>
+<div class="container">
+  <h3>Something's wrong here...</h3>
+  <p>
+    We cannot find the page you are looking for. Check out our other links to
+    navigate back home
+  </p>
+  <div class="button-container">
+    <a href="/">Home</a>
+    <a href="/#trial">contact</a>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: #284b63;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    max-width: 960px;
+
+    h3 {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+  }
+  .button-container {
+    display: flex;
+    gap: 1em;
+    margin-top: 2em;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      text-transform: capitalize;
+      padding: 10px 1em;
+      &:first-child {
+        background-color: #fff;
+        color: var(--grey);
+      }
+
+      &:last-child {
+        background-color: var(--green);
+        color: #fff;
+      }
+    }
+  }
+</style>
