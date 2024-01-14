@@ -12,8 +12,10 @@
   "dependencies": {
     "@astrojs/check": "^0.3.4",
     "@astrojs/partytown": "^2.0.3",
+    "@astrojs/sitemap": "^3.0.4",
     "accordion-js": "^3.3.4",
     "astro": "^4.0.7",
+    "astro-robots-txt": "^1.0.0",
     "gsap": "^3.12.4",
     "scrolltrigger": "^1.0.1",
     "typescript": "^5.3.3"
