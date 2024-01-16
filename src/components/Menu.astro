@@ -1,0 +1,204 @@
+---
+import { Picture } from "astro:assets";
+import Logo from "../img/logo.webp";
+
+const menu = [
+  {
+    label: "Home",
+    url: "/home",
+  },
+  {
+    label: "About Us",
+    url: "/about-us",
+    submenu: [
+      {
+        label: "History",
+        url: "/about-us/history",
+      },
+      {
+        label: "Team",
+        url: "/about-us/team",
+      },
+      {
+        label: "Mission",
+        url: "/about-us/mission",
+      },
+    ],
+  },
+  {
+    label: "Reports",
+    url: "/reports",
+  },
+  {
+    label: "Services",
+    url: "/services",
+    submenu: [
+      {
+        label: "Consulting",
+        url: "/services/consulting",
+      },
+      {
+        label: "Maintenance",
+        url: "/services/maintenance",
+      },
+    ],
+  },
+  {
+    label: "Contact",
+    url: "/contact",
+  },
+];
+---
+
+<section id="header">
+  <div class="container">
+    <Picture src={Logo} alt="logo" formats={["avif", "webp"]} class="logo" />
+    <nav>
+      {
+        menu.map((e: any) => (
+          <li>
+            <a href={e.url} class={e.submenu ? "has-submenu" : ""}>
+              {e.label}
+              {e.submenu ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              ) : (
+                ""
+              )}
+            </a>
+            {e.submenu ? (
+              <ul class="submenu">
+                {e.submenu.map((item: any) => (
+                  <a href={item.url}>{item.label}</a>
+                ))}
+              </ul>
+            ) : (
+              ""
+            )}
+          </li>
+        ))
+      }
+    </nav>
+  </div>
+</section>
+
+<style>
+  section {
+    width: 100%;
+    position: fixed;
+    background-color: transparent;
+    top: 0;
+    z-index: 3;
+    transition: 0.2s;
+    padding: 5px 0;
+  }
+
+  .fixed-header {
+    background-color: var(--blue);
+    padding: 10px 0px;
+    box-shadow:
+      0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075);
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      max-width: 100px;
+      height: auto;
+    }
+
+    nav {
+      display: flex;
+      gap: 2em;
+
+      li {
+        list-style: none;
+        position: relative;
+        padding: 1em 0;
+        a {
+          color: #fff;
+          text-decoration: none;
+          transition: 0.2s;
+          font-family: "Jost";
+          font-weight: 500;
+
+          &:hover {
+            color: var(--green);
+          }
+        }
+        .has-submenu {
+          display: flex;
+          gap: 5px;
+        }
+
+        .submenu {
+          position: absolute;
+          top: 5em;
+          left: -15px;
+          opacity: 0;
+          z-index: 1;
+          visibility: hidden;
+          transition: 0.2s;
+          width: 150%;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          background-color: #fff;
+          padding: 10px 15px;
+          border-radius: 5px;
+          box-shadow:
+            0 1px 1px hsl(0deg 0% 0% / 0.075),
+            0 2px 2px hsl(0deg 0% 0% / 0.075),
+            0 4px 4px hsl(0deg 0% 0% / 0.075),
+            0 8px 8px hsl(0deg 0% 0% / 0.075),
+            0 16px 16px hsl(0deg 0% 0% / 0.075);
+
+          a {
+            color: var(--green);
+            &:hover {
+              color: var(--blue);
+            }
+          }
+        }
+
+        &:hover .submenu {
+          opacity: 1;
+          visibility: visible;
+          top: 3em;
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById("header");
+
+  function addFixedClass() {
+    if (window.scrollY > 0) {
+      header?.classList.add("fixed-header");
+    } else {
+      header?.classList.remove("fixed-header");
+    }
+  }
+
+  window.onscroll = addFixedClass;
+</script>

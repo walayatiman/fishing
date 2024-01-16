@@ -1,8 +1,8 @@
 ---
-title: "My First Blog Post"
-description: "This is the first post of my new Astro blog."
-author: "Astro Learner"
-heroImage: ../../img/post1-img1.webp
+title: "November"
+description: "This is the fishing reports for November 2023"
+author: "Steve"
+heroImage: ../../img/november.jpg
 ---
 
 ## The security risks of changing package owners

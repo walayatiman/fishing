@@ -50,7 +50,7 @@ const background = Bg.src;
             stroke-linejoin="round"
             ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
             ></path><circle cx="12" cy="10" r="3"></circle></svg
-          >27 Division St, New York, <br /> NY 10002, USA
+          >5055 NE Elliott Circle #153, Corvallis Or. 97477
         </li>
         <li>
           <svg
@@ -66,7 +66,7 @@ const background = Bg.src;
             ><path
               d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
             ></path><polyline points="22,6 12,13 2,6"></polyline></svg
-          >Email: <a href="mailto:spet@gmail.com">spet@gmail.com</a>
+          >Email: <a href="mailto:#">info@marketingforguides.com</a>
         </li>
         <li>
           <svg
@@ -191,9 +191,13 @@ const background = Bg.src;
 
   .container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    grid-template-columns: repeat(4, minmax(12em, auto));
     grid-gap: 5em;
     padding: 5em 2em;
+
+    @media (max-width: 1280px) {
+      grid-template-columns: repeat(auto-fill, minmax(14em, 1fr));
+    }
 
     h3 {
       font-size: 1.2rem;
@@ -240,6 +244,17 @@ const background = Bg.src;
           &:hover {
             transform: none;
           }
+
+          a {
+            text-decoration: none;
+            color: var(--blue);
+            transition: 0.2s;
+            font-weight: bold;
+
+            &:hover {
+              color: var(--green);
+            }
+          }
         }
       }
       svg {
@@ -254,8 +269,13 @@ const background = Bg.src;
         margin-top: 2em;
         svg {
           position: relative;
-          width: 48px;
-          height: 48px;
+          width: 28px;
+          height: 28px;
+          transition: 0.2s;
+
+          &:hover {
+            transform: translateY(-5px);
+          }
         }
       }
     }
