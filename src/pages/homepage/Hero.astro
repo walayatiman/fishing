@@ -191,15 +191,27 @@ import Button from "../../components/Button.astro";
   import gsap from "gsap";
   import ScrollTrigger from "gsap/ScrollTrigger";
 
+  var parent = document.querySelector(".content-container");
+  var elements = parent?.querySelectorAll("*");
+
+  const icons = document.querySelectorAll(".info-content-container");
+  let delay = 1;
+
   gsap.registerPlugin(ScrollTrigger);
   window.onload = function () {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".hero-content",
-          start: "top 20%",
-        },
-      })
-      .fromTo(".content-container h1", { y: -50 }, { y: 0 });
+    elements?.forEach(function (element) {
+      gsap.fromTo(
+        element,
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, delay: delay }
+      );
+      delay = delay + 0.4;
+    });
+
+    gsap.fromTo(
+      icons,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, stagger: 0.2, delay: 2.8 }
+    );
   };
 </script>
