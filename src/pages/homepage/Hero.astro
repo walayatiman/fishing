@@ -68,7 +68,7 @@ import Button from "../../components/Button.astro";
 
     @media (max-width: 500px) {
       height: auto;
-      padding-top: 15%;
+      padding-top: 35%;
       padding-bottom: 15%;
     }
 
@@ -88,9 +88,13 @@ import Button from "../../components/Button.astro";
   }
 
   h2 {
-    font-size: clamp(1em, 7vw, 1.8em);
+    font-size: clamp(2em, 7vw, 1.2em);
     font-weight: 500;
     margin-bottom: 1em;
+
+    @media (max-width: 400px) {
+      font-size: clamp(1em, 7vw, 1.3em);
+    }
   }
 
   .info-container {
