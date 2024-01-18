@@ -1,6 +1,7 @@
 ---
 import { Picture, Image } from "astro:assets";
 import { getCollection, getEntry } from "astro:content";
+import Bar from "../../components/Bar.astro";
 
 const blogItems = await getCollection("blog", ({ data }) => {
   return data;
@@ -9,7 +10,9 @@ const blogItems = await getCollection("blog", ({ data }) => {
 
 <section>
   <div class="container">
-    <h2>Our Recent Reports</h2><hr /><p>
+    <h2>Our Recent Reports</h2>
+    <Bar />
+    <p>
       In our most recent update, we delve into the exciting developments and
       noteworthy achievements.
     </p>

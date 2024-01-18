@@ -199,7 +199,7 @@ import Button from "../../components/Button.astro";
   var elements = parent?.querySelectorAll("*");
 
   const icons = document.querySelectorAll(".info-content-container");
-  let delay = 1;
+  let delay = 3;
 
   gsap.registerPlugin(ScrollTrigger);
   window.onload = function () {
@@ -215,7 +215,7 @@ import Button from "../../components/Button.astro";
     gsap.fromTo(
       icons,
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, stagger: 0.2, delay: 2.8 }
+      { opacity: 1, y: 0, stagger: 0.2, delay: 4.8 }
     );
   };
 </script>

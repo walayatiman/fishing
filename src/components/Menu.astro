@@ -1,6 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import Logo from "../img/logo.webp";
+import MobileLogo from "../img/mobilelogo.png";
 
 const menu = [
   {
@@ -93,6 +94,61 @@ const menu = [
   </div>
 </section>
 
+<div class="mobile-section">
+  <div class="mobile-menu">
+    <Picture
+      src={MobileLogo}
+      alt="logo"
+      formats={["avif", "webp"]}
+      class="logo"
+    />
+    <button class="menu-button" onclick="toggleMenu()"
+      ><div class="menu-btn">
+        <span class="menu-item"></span>
+        <span class="menu-item"></span>
+        <span class="menu-item"></span>
+      </div></button
+    >
+  </div>
+  <menu>
+    {
+      menu.map((e: any) => (
+        <li>
+          <a href={e.url} class={e.submenu ? "has-submenu" : ""}>
+            {e.label}
+            {e.submenu ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            ) : (
+              ""
+            )}
+          </a>
+          {e.submenu ? (
+            <ul class="submenu">
+              {e.submenu.map((item: any) => (
+                <a href={item.url}>{item.label}</a>
+              ))}
+            </ul>
+          ) : (
+            ""
+          )}
+        </li>
+      ))
+    }
+  </menu>
+</div>
+
 <style>
   section {
     width: 100%;
@@ -113,6 +169,10 @@ const menu = [
       0 4px 4px hsl(0deg 0% 0% / 0.075),
       0 8px 8px hsl(0deg 0% 0% / 0.075),
       0 16px 16px hsl(0deg 0% 0% / 0.075);
+
+    @media (max-width: 500px) {
+      display: none;
+    }
   }
 
   .container {
@@ -120,8 +180,12 @@ const menu = [
     align-items: center;
     justify-content: space-between;
 
+    @media (max-width: 500px) {
+      display: none;
+    }
+
     .logo {
-      max-width: 100px;
+      max-width: 150px;
       height: auto;
     }
 
@@ -187,18 +251,170 @@ const menu = [
       }
     }
   }
+
+  .mobile-menu {
+    display: none;
+    position: relative;
+    @media (max-width: 500px) {
+      visibility: visible;
+      display: flex;
+      align-items: center;
+    }
+
+    picture {
+      width: 5em;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .mobile-section {
+    position: fixed;
+    width: 100%;
+    z-index: 30;
+    transition: all 0.25s ease-in-out;
+    background-color: var(--blue);
+    @media (min-width: 500px) {
+      display: none;
+    }
+    box-shadow:
+      0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075);
+
+    .mobile-menu {
+      justify-content: space-between;
+      padding: 10px 1em;
+
+      button {
+        background-color: transparent;
+        border: none;
+      }
+    }
+    menu {
+      background-color: var(--blue);
+      padding: 2em 1em;
+      opacity: 0;
+      transition: all ease-in-out 0.25s;
+      position: absolute;
+      width: -webkit-fill-available;
+      width: -moz-available;
+      z-index: 30;
+      li {
+        list-style: none;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+          font-weight: 500;
+          font-size: 14px;
+        }
+
+        .has-submenu {
+          margin-top: 10px;
+          display: block;
+          margin-bottom: 5px;
+          @media (max-width: 500px) {
+            svg {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .submenu {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        padding: 10px 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+
+        a {
+          color: var(--green);
+          padding-bottom: 5px;
+        }
+      }
+    }
+
+    .menu-opened {
+      opacity: 1;
+      z-index: 20;
+    }
+  }
+
+  .fixed-mobile-header {
+    background-color: var(--blue);
+    position: fixed;
+  }
+
+  .menu-item {
+    transition: all 0.2s;
+    display: block;
+    width: 40px;
+    height: 3px;
+    margin: 0 0 5px;
+    background: #fff;
+  }
+
+  .menu-btn.open .menu-item:first-child {
+    transform: rotate(45deg);
+    transform-origin: 10px 50%;
+  }
+
+  .menu-btn.open .menu-item:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-btn.open .menu-item:nth-child(3) {
+    transform: rotate(-45deg);
+    transform-origin: 8px 50%;
+  }
 </style>
 
 <script>
+  import gsap from "gsap";
   const header = document.getElementById("header");
+  const mobileHeader = document.querySelector(".mobile-section");
+  const menuHeader = document.querySelectorAll("#header menu li");
+
+  gsap.fromTo(
+    "#header .container picture",
+    { opacity: 0, x: -20 },
+    { opacity: 1, x: 20 }
+  );
+
+  gsap.fromTo(
+    menuHeader,
+    { opacity: 0, x: -20 },
+    { opacity: 1, x: 0, stagger: 0.4 },
+    "-=0.5"
+  );
 
   function addFixedClass() {
     if (window.scrollY > 0) {
       header?.classList.add("fixed-header");
+      mobileHeader?.classList.add("fixed-mobile-header");
     } else {
       header?.classList.remove("fixed-header");
+      mobileHeader?.classList.remove("fixed-mobile-header");
     }
   }
 
   window.onscroll = addFixedClass;
+
+  function toggleMenu() {
+    const menu = document.querySelector(".mobile-section menu");
+    menu?.classList.toggle("menu-opened");
+  }
+
+  var targetElement = document.querySelector(".menu-btn");
+  targetElement?.addEventListener("click", function () {
+    targetElement?.classList.toggle("open");
+  });
 </script>

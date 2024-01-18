@@ -1,0 +1,40 @@
+---
+
+---
+
+<div class="bar"></div>
+
+<style>
+  .bar {
+    background: var(--dark-grey);
+    border-radius: 30px;
+    height: 5px;
+    margin: 20px auto;
+    position: relative;
+    width: 90px;
+  }
+
+  .bar::before {
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-name: MOVE-BG;
+    animation-timing-function: linear;
+    background: var(--green);
+    border-radius: 50%;
+    content: "";
+    height: 10px;
+    left: 0;
+    position: absolute;
+    top: -2.7px;
+    width: 10px;
+  }
+
+  @keyframes MOVE-BG {
+    0% {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(88px);
+    }
+  }
+</style>

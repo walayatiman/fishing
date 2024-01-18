@@ -69,6 +69,11 @@ const background = bg.src;
           padding: 10px;
           background-color: #1e1e1e;
           color: #fff;
+
+          @media (max-width: 500px) {
+            width: 100%;
+            margin-bottom: 1em;
+          }
         }
 
         .styled {
@@ -77,6 +82,10 @@ const background = bg.src;
           border: none;
           margin-left: 1em;
           cursor: pointer;
+
+          @media (max-width: 500px) {
+            margin: 0;
+          }
         }
       }
     }
