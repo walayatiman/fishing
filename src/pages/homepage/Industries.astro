@@ -4,7 +4,7 @@ import Overlay from "./img/overlay.webp";
 import Bar from "../../components/Bar.astro";
 ---
 
-<section>
+<section id="industries">
   <div class="container">
     <h2>Industries We Serve</h2>
     <Bar />
@@ -117,3 +117,26 @@ import Bar from "../../components/Bar.astro";
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  import { Power3 } from "gsap";
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#industries",
+        start: "top center",
+      },
+    })
+    .fromTo("#industries h2", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#industries .bar", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#industries p", { x: -20, opacity: 0 }, { x: 0, opacity: 1 })
+    .fromTo(
+      ".industry",
+      { opacity: 0, x: 20 },
+      { opacity: 1, x: 0, stagger: 0.4, ease: Power3.easeInOut }
+    );
+</script>

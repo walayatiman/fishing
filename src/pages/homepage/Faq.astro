@@ -2,7 +2,7 @@
 
 ---
 
-<section>
+<section id="faq">
   <div class="container">
     <h3>Frequently Asked Questions & Honest Answers</h3>
     <div class="accordion-container">
@@ -52,11 +52,9 @@
         </h2>
         <div class="ac-panel">
           <p class="ac-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Absolutely
-            not, how does the saying go “Give a man a fish and feed him for a
-            day, teach a man to fish and feed him for a life time”. Your custom
-            designed marketing system generates leads your your business only.
-            These leads are never shared with any one else.
+            No, we are not a booking agency or a lead-selling company. Our focus
+            is on providing valuable information and assistance in various
+            domains, including marketing, SEM and branding
           </p>
         </div>
       </div>
@@ -105,12 +103,16 @@
     }
 
     .accordion-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 2em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
 
-      @media (max-width: 500px) {
-        grid-template-columns: repeat(1, 1fr);
+      .ac {
+        align-self: start;
+        width: 48%;
+        @media (max-width: 500px) {
+          width: 100%;
+        }
       }
 
       p {
@@ -123,6 +125,26 @@
 <script>
   import Accordion from "accordion-js";
   import "accordion-js/dist/accordion.min.css";
-
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
   new Accordion(".accordion-container");
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#faq",
+        start: "top center",
+      },
+    })
+    .fromTo(
+      "#faq h3",
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.4 }
+    )
+    .fromTo(
+      ".accordion-container .ac",
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.2 }
+    );
 </script>

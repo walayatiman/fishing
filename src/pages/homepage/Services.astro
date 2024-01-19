@@ -57,7 +57,7 @@ import Index from "../index.astro";
 import Bar from "../../components/Bar.astro";
 ---
 
-<section>
+<section id="services">
   <div class="container">
     <h2>Services We Can Help You With</h2>
     <Bar />
@@ -211,3 +211,25 @@ import Bar from "../../components/Bar.astro";
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#services",
+        start: "top center",
+      },
+    })
+    .fromTo("#services h2", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#services .bar", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#services p", { x: -20, opacity: 0 }, { x: 0, opacity: 1 })
+    .fromTo(
+      "#services .services-item",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.2 }
+    );
+</script>

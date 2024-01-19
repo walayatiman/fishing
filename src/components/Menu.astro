@@ -102,7 +102,7 @@ const menu = [
       formats={["avif", "webp"]}
       class="logo"
     />
-    <button class="menu-button" onclick="toggleMenu()"
+    <button class="menu-button"
       ><div class="menu-btn">
         <span class="menu-item"></span>
         <span class="menu-item"></span>
@@ -305,6 +305,7 @@ const menu = [
       width: -webkit-fill-available;
       width: -moz-available;
       z-index: 30;
+      visibility: hidden;
       li {
         list-style: none;
 
@@ -345,6 +346,7 @@ const menu = [
     .menu-opened {
       opacity: 1;
       z-index: 20;
+      visibility: visible;
     }
   }
 
@@ -378,22 +380,8 @@ const menu = [
 </style>
 
 <script>
-  import gsap from "gsap";
   const header = document.getElementById("header");
   const mobileHeader = document.querySelector(".mobile-section");
-  const menuHeader = document.querySelectorAll("#header menu li");
-
-  gsap.fromTo(
-    "#header .container picture",
-    { opacity: 0, x: -20 },
-    { opacity: 1, x: 20 }
-  );
-
-  gsap.fromTo(
-    menuHeader,
-    { opacity: 0, x: -20 },
-    { opacity: 1, x: 0, stagger: 0.6, delay: 1 }
-  );
 
   function addFixedClass() {
     if (window.scrollY > 0) {
@@ -407,10 +395,12 @@ const menu = [
 
   window.onscroll = addFixedClass;
 
-  function toggleMenu() {
-    const menu = document.querySelector(".mobile-section menu");
-    menu?.classList.toggle("menu-opened");
-  }
+  document
+    .querySelector(".menu-button")
+    ?.addEventListener("click", function () {
+      const menu = document.querySelector(".mobile-section menu");
+      menu?.classList.toggle("menu-opened");
+    });
 
   var targetElement = document.querySelector(".menu-btn");
   targetElement?.addEventListener("click", function () {

@@ -29,10 +29,10 @@ const background = Bg.src;
         <li>Latest News</li>
       </ul>
     </div>
-    <div>
+    <div class="support">
       <h3>Support</h3>
       <ul>
-        <li>FAQ's</li>
+        <li><a href="#faq">FAQ's</a></li>
         <li>Privacy Policy</li>
         <li>Terms & Condition</li>
         <li>Team</li>
@@ -224,6 +224,11 @@ const background = Bg.src;
           color: var(--green);
           transform: translateX(5%);
         }
+
+        a {
+          color: var(--blue);
+          text-decoration: none;
+        }
       }
     }
     .logo-container {
@@ -286,3 +291,38 @@ const background = Bg.src;
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  import { Power3 } from "gsap";
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "footer",
+        start: "top center",
+      },
+    })
+    .fromTo(
+      "footer .logo-container",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1, ease: Power3.easeInOut }
+    )
+    .fromTo(
+      "footer .company",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1, ease: Power3.easeInOut }
+    )
+    .fromTo(
+      "footer .support",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1, ease: Power3.easeInOut }
+    )
+    .fromTo(
+      "footer .address",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1, ease: Power3.easeInOut }
+    );
+</script>

@@ -6,7 +6,7 @@ import portraitThree from "./img/portraits/portraitThree.webp";
 import portraitFour from "./img/portraits/portraitFour.webp";
 ---
 
-<section>
+<section id="team">
   <div class="container">
     <h2>Our Awesome Team</h2><p>
       Our team is a dynamic and collaborative group of individuals driven by a
@@ -67,6 +67,7 @@ import portraitFour from "./img/portraits/portraitFour.webp";
 <style>
   section {
     background-color: #f9f6f6;
+    overflow: hidden;
 
     .container {
       padding: 5% 1em;
@@ -144,3 +145,24 @@ import portraitFour from "./img/portraits/portraitFour.webp";
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#team",
+        start: "top center",
+      },
+    })
+    .fromTo("#team h2", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#team p", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo(
+      "#team .team-member",
+      { y: "20em", opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.2 }
+    );
+</script>

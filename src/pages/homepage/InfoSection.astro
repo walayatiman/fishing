@@ -7,10 +7,21 @@ import Button from "../../components/Button.astro";
 ---
 
 <section>
-  <div class="container">
-    <div class="img-container">
-      <Picture src={Captain} alt="captain" formats={["avif", "webp"]} />
-      <Picture src={Charter} alt="charter" formats={["avif", "webp"]} />
+  <div class="container fishing-guides">
+    <div class="boats-img img-container">
+      <Picture
+        src={Captain}
+        alt="captain"
+        formats={["avif", "webp"]}
+        id="captain"
+      />
+
+      <Picture
+        src={Charter}
+        alt="charter"
+        formats={["avif", "webp"]}
+        id="boat"
+      />
     </div>
     <div class="content-container">
       <h3>Fishing Guides, Lodges & Outfitters Get More Bookings!</h3>
@@ -28,6 +39,7 @@ import Button from "../../components/Button.astro";
   section {
     background: linear-gradient(135deg, var(--blue), var(--green));
     position: relative;
+    overflow: hidden;
 
     .container {
       padding-top: 5%;
@@ -61,6 +73,7 @@ import Button from "../../components/Button.astro";
         picture {
           width: 350px;
           height: 350px;
+          overflow: hidden;
 
           img {
             width: 100%;
@@ -106,3 +119,83 @@ import Button from "../../components/Button.astro";
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  import { Power3 } from "gsap";
+  gsap.registerPlugin(ScrollTrigger);
+
+  let tl = gsap.timeline({ delay: 0.8 });
+
+  const firstImg = document.querySelector(".boats-img");
+  const firstChild = firstImg?.firstElementChild;
+  const lastChild = firstImg?.lastElementChild;
+
+  if (
+    firstChild !== null &&
+    firstChild !== undefined &&
+    lastChild !== null &&
+    lastChild !== undefined
+  ) {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".fishing-guides",
+          start: "top center",
+        },
+        delay: 0.8,
+      })
+      .from(firstChild, 1.2, { y: 1280, ease: Power3.easeInOut }, "Start")
+      .from(
+        firstChild.lastElementChild,
+        2,
+        { scale: 1.6, ease: Power3.easeInOut },
+        0.2
+      )
+      .from(lastChild, 1.4, { y: 1280, ease: Power3.easeInOut }, 0.2)
+      .from(
+        lastChild.lastElementChild,
+        2,
+        { scale: 1.6, ease: Power3.easeInOut },
+        0.2
+      );
+    // .fromTo(
+    //   ".fishing-guides picture",
+    //   2,
+    //   { y: "100%", opacity: 0, overflow: "hidden" },
+    //   { y: 0, opacity: 1, stagger: 0.6 },
+    //   0.2
+    // )
+    // .fromTo(
+    //   ".fishing-guides picture img",
+    //   2,
+    //   { scale: 1.4 },
+    //   { scale: 1, ease: "power2.inOut" },
+    //   0.4
+    // );
+  }
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".fishing-guides",
+        start: "top center",
+      },
+      delay: 1.2,
+    })
+    .fromTo(
+      ".fishing-guides .content-container h3",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".fishing-guides .content-container p",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".fishing-guides .content-container a",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    );
+</script>

@@ -31,7 +31,7 @@ const data = [
 ];
 ---
 
-<section>
+<section id="testimonial">
   <div class="container">
     <h2>What Users Saying</h2>
     <Bar />
@@ -175,3 +175,25 @@ const data = [
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#testimonial",
+        start: "top center",
+      },
+    })
+    .fromTo("#testimonial h2", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#testimonial .bar", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#testimonial p", { x: -20, opacity: 0 }, { x: 0, opacity: 1 })
+    .fromTo(
+      ".testimonial",
+      { x: -20, opacity: 0 },
+      { x: 0, opacity: 1, stagger: 0.4 }
+    );
+</script>

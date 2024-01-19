@@ -6,7 +6,7 @@ import Bg from "./img/users.webp";
 const BckGround = Bg.src;
 ---
 
-<section style=`background-image:url("${BckGround}")`>
+<section style=`background-image:url("${BckGround}")` id="users">
   <div class="container">
     <h2>We always try to understand users expectation</h2>
     <Bar />
@@ -70,6 +70,7 @@ const BckGround = Bg.src;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 
     &::after {
       content: "";
@@ -155,3 +156,26 @@ const BckGround = Bg.src;
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#users",
+        start: "top center",
+      },
+    })
+    .fromTo("#users h2", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#users .bar", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#users p", { x: -20, opacity: 0 }, { x: 0, opacity: 1 })
+    .fromTo(
+      ".detail",
+      { x: 20, opacity: 0 },
+      { x: 0, opacity: 1, stagger: 0.2 }
+    )
+    .fromTo(".questions", { opacity: 0 }, { opacity: 1 });
+</script>

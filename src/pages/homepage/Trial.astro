@@ -6,24 +6,30 @@ const background = bg.src;
 <section id="trial" style=`background-image:url("${background}")`>
   <div class="container">
     <div class="content">
-      <h2>Start your free trial</h2>
-      <form>
+      <h2>Get a qoute now</h2>
+      <form action="https://api.web3forms.com/submit" method="POST">
         <input
-          type="text"
+          type="hidden"
+          name="access_key"
+          value="10c9d345-49f1-4626-8a61-2b182901bd47"
+        />
+
+        <input
           id="name"
+          type="text"
           name="name"
           required
-          minlength="4"
-          maxlength="8"
-          size="10"
-          aria-label="Trial"
+          placeholder="Full Name"
         />
         <input
-          class="styled"
-          type="button"
-          value="Get a qoute"
-          aria-label="get qoute"
+          id="email"
+          type="email"
+          name="email"
+          required
+          placeholder="Email"
         />
+        <div class="h-captcha" data-captcha="true"></div>
+        <button class="styled" type="submit">Get qoute</button>
       </form>
       <p class="message">
         Test out our Analytics features for 14 days, no credit card required.
@@ -62,8 +68,24 @@ const background = bg.src;
 
       form {
         margin-bottom: 1em;
+        display: flex;
+        gap: 10px;
         #name {
-          width: 30em;
+          width: 15em;
+          border-radius: 30em;
+          border: none;
+          padding: 10px;
+          background-color: #1e1e1e;
+          color: #fff;
+
+          @media (max-width: 500px) {
+            width: 100%;
+            margin-bottom: 1em;
+          }
+        }
+
+        #email {
+          width: 15em;
           border-radius: 30em;
           border: none;
           padding: 10px;
@@ -80,8 +102,8 @@ const background = bg.src;
           padding: 10px 25px;
           border-radius: 30em;
           border: none;
-          margin-left: 1em;
           cursor: pointer;
+          font-weight: bold;
 
           @media (max-width: 500px) {
             margin: 0;
@@ -113,3 +135,21 @@ const background = bg.src;
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  import { Power3 } from "gsap";
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#trial",
+        start: "top center",
+      },
+    })
+    .fromTo("#trial h2", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("form", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#trial p", { y: -10, opacity: 0 }, { y: 0, opacity: 1 });
+</script>

@@ -124,3 +124,33 @@ const data = [
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".services-content",
+        start: "top center",
+      },
+    })
+    .fromTo(
+      ".services-content h2",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".services-content .bar",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(".services-content p", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo(
+      ".services-items .services-item",
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.4 }
+    );
+</script>

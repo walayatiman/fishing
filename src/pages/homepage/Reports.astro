@@ -8,7 +8,7 @@ const blogItems = await getCollection("blog", ({ data }) => {
 });
 ---
 
-<section>
+<section id="reports">
   <div class="container">
     <h2>Our Recent Reports</h2>
     <Bar />
@@ -143,3 +143,29 @@ const blogItems = await getCollection("blog", ({ data }) => {
     }
   </style>
 </section>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  import { Power3 } from "gsap";
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#reports",
+        start: "top center",
+      },
+    })
+    .fromTo("#reports h2", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#reports .bar", { y: -10, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo("#reports p", { x: -20, opacity: 0 }, { x: 0, opacity: 1 })
+    .fromTo(
+      ".single-blog",
+      {
+        opacity: 0,
+        x: -20,
+      },
+      { opacity: 1, x: 0, stagger: 0.4, ease: Power3.easeInOut }
+    );
+</script>
