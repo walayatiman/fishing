@@ -6,7 +6,7 @@ import Logos from "../../img/colorLogo.png";
 const background = Bg.src;
 ---
 
-<footer style=`background-image:url("${background}")`>
+<footer style=`background-image:url("${background}")` id="footer">
   <div class="container">
     <div class="logo-container">
       <Picture
@@ -301,7 +301,7 @@ const background = Bg.src;
   gsap
     .timeline({
       scrollTrigger: {
-        trigger: "footer",
+        trigger: "#footer",
         start: "top center",
       },
     })
