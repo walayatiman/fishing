@@ -104,13 +104,11 @@ const menu = [
       formats={["avif", "webp"]}
       class="logo"
     />
-    <button class="menu-button"
-      ><div class="menu-btn">
-        <span class="menu-item"></span>
-        <span class="menu-item"></span>
-        <span class="menu-item"></span>
-      </div></button
-    >
+    <button class="menu-btn">
+      <span class="menu-item"></span>
+      <span class="menu-item"></span>
+      <span class="menu-item"></span>
+    </button>
   </div>
   <menu>
     {
@@ -201,7 +199,6 @@ const menu = [
       li {
         list-style: none;
         position: relative;
-        padding: 1em 0;
         a {
           color: #fff;
           text-decoration: none;
@@ -229,7 +226,6 @@ const menu = [
           width: 150%;
           display: flex;
           flex-direction: column;
-          gap: 15px;
           background-color: #fff;
           padding: 10px 15px;
           border-radius: 5px;
@@ -240,10 +236,16 @@ const menu = [
             0 8px 8px hsl(0deg 0% 0% / 0.075),
             0 16px 16px hsl(0deg 0% 0% / 0.075);
 
-          a {
-            color: var(--green);
-            &:hover {
-              color: var(--blue);
+          li {
+            a {
+              color: var(--green);
+              padding: 5px 0 !important;
+              width: 100%;
+              display: block;
+              position: relative;
+              &:hover {
+                color: var(--blue);
+              }
             }
           }
         }
@@ -251,7 +253,7 @@ const menu = [
         &:hover .submenu {
           opacity: 1;
           visibility: visible;
-          top: 3em;
+          top: 25px;
         }
       }
     }
@@ -400,12 +402,10 @@ const menu = [
 
   window.onscroll = addFixedClass;
 
-  document
-    .querySelector(".menu-button")
-    ?.addEventListener("click", function () {
-      const menu = document.querySelector(".mobile-section menu");
-      menu?.classList.toggle("menu-opened");
-    });
+  document.querySelector(".menu-btn")?.addEventListener("click", function () {
+    const menu = document.querySelector(".mobile-section menu");
+    menu?.classList.toggle("menu-opened");
+  });
 
   var targetElement = document.querySelector(".menu-btn");
   targetElement?.addEventListener("click", function () {
