@@ -1,0 +1,241 @@
+---
+import OtherPages from "./Layouts/OtherPages.astro";
+import Header from "../components/Header.astro";
+import Team from "../img/team.jpg";
+import { Picture } from "astro:assets";
+import Bar from "../components/Bar.astro";
+import Teamed from "./homepage/Team.astro";
+import Testimonials from "./homepage/Testimonials.astro";
+import Airbnb from "../img/logos/airbnb.png";
+import Envato from "../img/logos/envato.png";
+import Github from "../img/logos/github.png";
+import Node from "../img/logos/node.png";
+import Slack from "../img/logos/slack.png";
+---
+
+<OtherPages>
+  <Header title="About Us" />
+  <section id="aboutUs">
+    <div class="team-container">
+      <div class="img-container">
+        <Picture src={Team} alt="team" formats={["avif", "webp"]} />
+      </div>
+      <div class="content-container">
+        <h6>About Us</h6>
+        <h2>Engaging New Audiences Through Smart Approach</h2>
+        <Bar />
+        <p>
+          As a premier fishing marketing agency, Coastal Thrill Charters casts a
+          net of expertise to elevate brands within the angling industry. With a
+          deep understanding of the fishing community, our team combines
+          strategic marketing initiatives with a passion for the sport to ensure
+          our clients reel in success.
+        </p>
+        <p>
+          At Coastal Thrill Charters, we are anglers at heart and marketers by
+          trade, uniquely positioning us to navigate the waters of fishing
+          industry promotion. Whether you're a tackle shop, charter service, or
+          equipment manufacturer, our tailored marketing solutions are designed
+          to hook your target audience and create a lasting impact.
+        </p>
+        <p>
+          Coastal Thrill Charters is not just a marketing agency; we are the
+          current that propels fishing brands to new heights. With a focus on
+          storytelling, digital engagement, and a love for the outdoors, we
+          pride ourselves on being the go-to partner for fishing businesses
+          looking to make waves in a competitive market.
+        </p>
+      </div>
+    </div>
+    <div class="core">
+      <div class="history">
+        <h3>Our History</h3>
+        <p>
+          From humble beginnings, we steadily grew, guided by a commitment to
+          our value and a vision to provide fishing charters internet presense.
+        </p>
+      </div>
+      <div class="mission">
+        <h3>Our mission</h3>
+        <p>
+          Our mission is to empower individuals and communities by providing
+          innovative solutions and fostering positive change through a
+          commitment to excellence and social responsibility.
+        </p>
+      </div>
+      <div class="who">
+        <h3>Who we are</h3>
+        <p>
+          We are a dynamic and forward-thinking team dedicated to delivering
+          exceptional solutions, driven by a passion for innovation,
+          collaboration, and exceeding the expectations of those we serve.
+        </p>
+      </div>
+    </div>
+    <Teamed />
+    <Testimonials />
+
+    <div class="logos container">
+      <Picture src={Airbnb} alt="sponsors" formats={["avif", "webp"]} />
+      <Picture src={Envato} alt="sponsors" formats={["avif", "webp"]} />
+      <Picture src={Github} alt="sponsors" formats={["avif", "webp"]} />
+      <Picture src={Node} alt="sponsors" formats={["avif", "webp"]} />
+      <Picture src={Slack} alt="sponsors" formats={["avif", "webp"]} />
+    </div>
+  </section>
+</OtherPages>
+
+<style>
+  .team-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+    width: 100%;
+    align-items: center;
+
+    @media (max-width: 810px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .img-container {
+      height: 100%;
+
+      picture {
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: right;
+        }
+      }
+    }
+
+    .content-container {
+      @media (max-width: 810px) {
+        padding: 0 2em;
+      }
+      .bar {
+        margin: 20px 0;
+      }
+
+      p {
+        max-width: 540px;
+        margin-bottom: 1em;
+        color: var(--grey);
+        font-size: 14px;
+
+        @media (max-width: 810px) {
+          max-width: 100%;
+        }
+      }
+
+      h2 {
+        font-size: 28px;
+        color: var(--blue);
+        font-weight: bold;
+        max-width: 540px;
+        @media (max-width: 810px) {
+          max-width: 100%;
+        }
+      }
+
+      h6 {
+        font-size: 15px;
+        background-color: var(--green);
+        width: max-content;
+        margin-bottom: 1em;
+        padding: 5px 20px;
+        color: #fff;
+        border-radius: 30em;
+      }
+    }
+  }
+
+  .core {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 3em;
+    margin-inline: auto;
+    max-width: 1280px;
+    padding: 4em 1em;
+
+    p {
+      font-size: 14px;
+      color: var(--grey);
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 1em;
+      color: var(--blue);
+    }
+  }
+
+  .logos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 3em;
+    align-items: center;
+    padding: 4em 1em;
+
+    @media (max-width: 810px) {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    picture {
+      text-align: center;
+    }
+
+    img {
+      filter: grayscale(1);
+      transition: all ease-in-out 0.25s;
+
+      &:hover {
+        filter: grayscale(0.5);
+      }
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#aboutUs",
+        start: "top bottom",
+        markers: true,
+      },
+      delay: 2,
+    })
+    .fromTo(
+      ".img-container picture",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".content-container h6",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".content-container h2",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".content-container .bar",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".content-container p",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    );
+</script>

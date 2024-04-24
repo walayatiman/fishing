@@ -3,6 +3,7 @@ title: "October"
 description: "This is the fishing reports for October 2023"
 author: "Harold"
 heroImage: ../../img/october.jpg
+categories: ["Astro", "Markdown"]
 ---
 
 ## The security risks of changing package owners

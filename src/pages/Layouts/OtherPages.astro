@@ -1,0 +1,19 @@
+---
+import "../../styles/global.css";
+import Head from "../../components/Head.astro";
+import Footer from "./Footer.astro";
+import Menu from "../../components/pageMenu.astro";
+---
+
+<html lang="en">
+  <Head title="Home" />
+  <body>
+    <Menu />
+    <div class="overlay first"></div>
+    <div class="overlay second"></div>
+    <div class="overlay third"></div>
+    <slot />
+    <Footer />
+    <script src="../../scripts/index.js"></script>
+  </body>
+</html>

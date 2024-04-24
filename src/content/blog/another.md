@@ -1,8 +1,10 @@
 ---
 title: "September"
-description: "This is the fishing reports for September 2023"
-author: "Dave"
+description: "This is the fishing reports for September 2023-2024"
+author: "David"
 heroImage: ../../img/september.jpg
+date: "Sepetember 13, 2013"
+categories: ["Astro", "Markdown"]
 ---
 
 ## The security risks of changing package owners
@@ -27,7 +29,7 @@ Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro qui
 
 3. **Making Blog Posts**: This is my first blog post! I now have Astro pages and Markdown posts!
 
-## What's next
+## Whats next
 
 I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
 
@@ -35,5 +37,6 @@ I will finish the Astro tutorial, and then keep adding more posts. Watch this sp
     .images p{
         display:grid;
         grid-template-columns:repeat(3, 1fr);
+        margin:2rem 0;
     }
 </style>

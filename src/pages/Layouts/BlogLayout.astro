@@ -1,0 +1,49 @@
+---
+import "../../styles/global.css";
+import Head from "../../components/Head.astro";
+import Footer from "../Layouts/Footer.astro";
+import Menu from "../../components/Menu.astro";
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <Head title={title} />
+  <body>
+    <Menu />
+    <div class="overlay first"></div>
+    <div class="overlay second"></div>
+    <div class="overlay third"></div>
+    <div class="post-container">
+      <slot />
+    </div>
+    <Footer />
+    <script src="../../scripts/index.js"></script>
+    <style>
+      .post-container {
+        max-width: 1280px;
+        margin-inline: auto;
+        margin-top: 5rem;
+
+        h1 {
+          font-size: clamp(2.1875rem, 1.8466rem + 1.7045vw, 3.125rem);
+          font-weight: bold;
+        }
+
+        h2 {
+          font-size: clamp(1.125rem, 0.8523rem + 1.3636vw, 1.875rem);
+          margin-bottom: 1rem;
+        }
+
+        p {
+          margin-bottom: 0.5rem;
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    </style>
+  </body>
+</html>
