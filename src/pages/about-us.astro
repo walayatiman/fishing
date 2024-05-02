@@ -11,9 +11,10 @@ import Envato from "../img/logos/envato.png";
 import Github from "../img/logos/github.png";
 import Node from "../img/logos/node.png";
 import Slack from "../img/logos/slack.png";
+import Head from "../components/Head.astro";
 ---
 
-<OtherPages>
+<OtherPages title="About Us">
   <Header title="About Us" />
   <section id="aboutUs">
     <div class="team-container">
@@ -47,7 +48,7 @@ import Slack from "../img/logos/slack.png";
         </p>
       </div>
     </div>
-    <div class="core">
+    <div class="core" id="core">
       <div class="history">
         <h3>Our History</h3>
         <p>
@@ -209,7 +210,6 @@ import Slack from "../img/logos/slack.png";
       scrollTrigger: {
         trigger: "#aboutUs",
         start: "top bottom",
-        markers: true,
       },
       delay: 2,
     })

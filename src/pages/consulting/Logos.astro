@@ -1,0 +1,34 @@
+---
+import One from "./images/1.png";
+import Two from "./images/2.png";
+import Three from "./images/3.png";
+import Four from "./images/4.png";
+
+const image = [One, Two, Three, Four];
+import ImagePicture from "../../components/ImagePicture.astro";
+---
+
+<div id="logo-container">
+  <div class="container">
+    {image.map((e) => <ImagePicture alt="logo" item={e} />)}
+  </div>
+</div>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 5rem;
+
+    picture {
+      max-width: 175px;
+    }
+
+    .picture-container {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+</style>

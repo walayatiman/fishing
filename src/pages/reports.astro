@@ -1,0 +1,164 @@
+---
+import OtherPages from "./Layouts/OtherPages.astro";
+import Header from "../components/Header.astro";
+import Repaports from "./homepage/Reports.astro";
+---
+
+<OtherPages title="Reports">
+  <Header title="Reports" />
+  <section id="reports"><Repaports /></section>
+</OtherPages>
+
+<style>
+  .team-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+    width: 100%;
+    align-items: center;
+
+    @media (max-width: 810px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .img-container {
+      height: 100%;
+
+      picture {
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: right;
+        }
+      }
+    }
+
+    .content-container {
+      @media (max-width: 810px) {
+        padding: 0 2em;
+      }
+      .bar {
+        margin: 20px 0;
+      }
+
+      p {
+        max-width: 540px;
+        margin-bottom: 1em;
+        color: var(--grey);
+        font-size: 14px;
+
+        @media (max-width: 810px) {
+          max-width: 100%;
+        }
+      }
+
+      h2 {
+        font-size: 28px;
+        color: var(--blue);
+        font-weight: bold;
+        max-width: 540px;
+        @media (max-width: 810px) {
+          max-width: 100%;
+        }
+      }
+
+      h6 {
+        font-size: 15px;
+        background-color: var(--green);
+        width: max-content;
+        margin-bottom: 1em;
+        padding: 5px 20px;
+        color: #fff;
+        border-radius: 30em;
+      }
+    }
+  }
+
+  .core {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 3em;
+    margin-inline: auto;
+    max-width: 1280px;
+    padding: 4em 1em;
+
+    p {
+      font-size: 14px;
+      color: var(--grey);
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 1em;
+      color: var(--blue);
+    }
+  }
+
+  .logos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 3em;
+    align-items: center;
+    padding: 4em 1em;
+
+    @media (max-width: 810px) {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    picture {
+      text-align: center;
+    }
+
+    img {
+      filter: grayscale(1);
+      transition: all ease-in-out 0.25s;
+
+      &:hover {
+        filter: grayscale(0.5);
+      }
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#aboutUs",
+        start: "top bottom",
+      },
+      delay: 2,
+    })
+    .fromTo(
+      ".img-container picture",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".content-container h6",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".content-container h2",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".content-container .bar",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    )
+    .fromTo(
+      ".content-container p",
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1 }
+    );
+</script>

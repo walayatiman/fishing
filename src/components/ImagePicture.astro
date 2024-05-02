@@ -1,0 +1,27 @@
+---
+import { Picture } from "astro:assets";
+const { item, alt } = Astro.props;
+---
+
+<div class="picture-container">
+  <Picture src={item} formats={["avif", "webp"]} alt={alt} />
+</div>
+
+<style>
+  .picture-container {
+    display: block;
+    width: 100%;
+    position: relative;
+    picture {
+      width: 100%;
+      height: auto;
+      display: block;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+</style>

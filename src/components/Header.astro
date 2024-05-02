@@ -1,12 +1,39 @@
 ---
 const { title } = Astro.props;
+
+async function fetchFromUnsplash() {
+  const accessKey = "Ux2bTpteNJ0hfZxCQ54t6GFj2flUd0LdEo7d78TbCa8";
+  const url = `https://api.unsplash.com/photos/random?query=landscape&orientation=landscape&client_id=${accessKey}&count=1`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching data from Unsplash: ", error);
+    return null; // Or handle the error as needed
+  }
+}
+
+const photos = await fetchFromUnsplash();
+const Bg = "url(" + photos[0].urls.full + ")";
 ---
 
-<div class="container header-container">
-  <h1>{title}</h1>
-</div>
+<section>
+  <div class="container header-container">
+    <h1>{title}</h1>
+  </div>
+</section>
 
-<style>
+<style define:vars={{ Bg }}>
+  section {
+    background-image: var(--Bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
   .container {
     min-height: 50vh;
     display: flex;
@@ -19,6 +46,7 @@ const { title } = Astro.props;
 
     @media (max-width: 500px) {
       min-height: 25vh;
+      padding-top: 3rem;
     }
 
     h1 {
@@ -28,23 +56,3 @@ const { title } = Astro.props;
     }
   }
 </style>
-
-<script>
-  import gsap from "gsap";
-  import ScrollTrigger from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".header-container",
-        start: "top 20%",
-      },
-      delay: 1,
-    })
-    .fromTo(
-      ".header-container h1",
-      { y: -10, opacity: 0 },
-      { y: 0, opacity: 1 }
-    );
-</script>

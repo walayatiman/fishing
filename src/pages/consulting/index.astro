@@ -1,0 +1,682 @@
+---
+import OtherPages from "../Layouts/OtherPages.astro";
+import Header from "../../components/Header.astro";
+import Repaports from "../homepage/Reports.astro";
+import Button from "../../components/Button.astro";
+import { Picture } from "astro:assets";
+import Services from "./images/services_img.png";
+import Megaphone from "./images/media-promotion.png";
+import Info from "./images/infographics.png";
+import ImagePicture from "../../components/ImagePicture.astro";
+import Logos from "./Logos.astro";
+
+import Agency from "./images/agency.jpg";
+import Marketing from "./images/marketing.jpg";
+import Profit from "./images/profit.jpg";
+import SEO from "./images/seo.jpg";
+import Social from "./images/social.jpg";
+import Clouds from "./images/clouds.png";
+
+const data = [
+  {
+    image: Agency,
+    date: "January 30th - February 1st",
+    category: "branding",
+    name: "THAT Conference Texas",
+  },
+  {
+    image: Marketing,
+    date: "January 30th - February 1st",
+    category: "marketing",
+    name: "THAT Conference Texas",
+  },
+  {
+    image: Profit,
+    date: "January 30th - February 1st",
+    category: "seo",
+    name: "THAT Conference Texas",
+  },
+  {
+    image: SEO,
+    date: "January 30th - February 1st",
+    category: "web",
+    name: "THAT Conference Texas",
+  },
+  {
+    image: Social,
+    date: "January 30th - February 1st",
+    category: "branding",
+    name: "THAT Conference Texas",
+  },
+];
+
+const pricingPlans = {
+  basic: {
+    name: "Basic Plan",
+    monthly: 9.99,
+    yearly: 99.99,
+    features: [
+      "Strategy & Research",
+      "Business & Finance Analysing",
+      "SEO Optimization",
+    ],
+  },
+  standard: {
+    name: "Standart Plan",
+    monthly: 19.99,
+    yearly: 199.99,
+    features: [
+      "Strategy & Research",
+      "Business & Finance Analysing",
+      "SEO Optimization",
+    ],
+  },
+  premium: {
+    name: "Premium Plan",
+    monthly: 29.99,
+    yearly: 299.99,
+    features: [
+      "Strategy & Research",
+      "Business & Finance Analysing",
+      "SEO Optimization",
+    ],
+  },
+};
+---
+
+<OtherPages title="Consulting">
+  <Header title="Consulting" />
+  <section id="consulting">
+    <div class="container first-section">
+      <div class="col-one">
+        <ImagePicture item={Services} alt="Consultation" />
+      </div>
+      <div class="col-two">
+        <h6>Best For You</h6>
+        <h2>Boosts Your Website Traffic!</h2>
+        <p>
+          Ea pro tibique comprehensam, sed ea verear numquam molestie. Nam te
+          omittam comprehensam. Ne nam nonumy putent fuisset, reque fabulas usu
+          ne.
+        </p>
+        <div class="columns">
+          <div class="blurb1">
+            <ImagePicture item={Megaphone} alt="Consultation" />
+            <h4>Media Promotion</h4>
+            <p>Maecenas elementum sapien in metus placerat finibus.</p>
+          </div>
+          <div class="blurb2">
+            <ImagePicture item={Info} alt="Consultation" />
+            <h4>Infographics Content</h4>
+            <p>Maecenas elementum sapien in metus placerat finibus.</p>
+          </div>
+        </div>
+        <Button title="Discover More" link="test" />
+      </div>
+    </div>
+    <div class="container second-section">
+      <h6>Previous Projects</h6>
+      <h2>Our Case Studies</h2>
+      <div class="content-grid">
+        <main class="main-with-aside">
+          <div class="flow">
+            <div class="filter">
+              <div class="btn-container">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="branding"
+                  >Branding</button
+                >
+                <button class="filter-btn" data-filter="marketing"
+                  >Marketing</button
+                >
+                <button class="filter-btn" data-filter="seo">SEO</button><button
+                  class="filter-btn"
+                  data-filter="web">Web</button
+                >
+              </div>
+            </div>
+
+            <ul class="conference-list">
+              {
+                data.map((e: any) => (
+                  <li class="conference" data-category={e.category}>
+                    <ImagePicture item={e.image} alt="Consultation" />
+                    <div class="conference-details">
+                      <span>{e.date}</span>
+                      <span class="conference-category">{e.category}</span>
+                    </div>
+                    <h2 class="conference-name">{e.name}</h2>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div class="third-section">
+      <div class="container">
+        <div class="col col1">
+          <h6>Our Services</h6><h4>Let’s Check Our Services</h4>
+          <div class="card">
+            <ImagePicture item={Megaphone} alt="card icon" />
+            <h3>Search Optimization</h3>
+            <p>
+              Maecenas elementum sapien in metus placerat finibus. Lorem ipsum
+              dolor sit amet, vix an natum.
+            </p>
+          </div>
+        </div>
+        <div class="col col2">
+          <div class="card">
+            <ImagePicture item={Info} alt="card icon" />
+            <h3>Social Media Strategy</h3>
+            <p>
+              Maecenas elementum sapien in metus placerat finibus. Lorem ipsum
+              dolor sit amet, vix an natum.
+            </p>
+          </div><div class="card">
+            <ImagePicture item={Megaphone} alt="card icon" />
+            <h3>Reporting & Analysis</h3>
+            <p>
+              Maecenas elementum sapien in metus placerat finibus. Lorem ipsum
+              dolor sit amet, vix an natum.
+            </p>
+          </div>
+        </div>
+        <div class="col col3">
+          <div class="card">
+            <ImagePicture item={Megaphone} alt="card icon" />
+            <h3>Real Time and Data</h3>
+            <p>
+              Maecenas elementum sapien in metus placerat finibus. Lorem ipsum
+              dolor sit amet, vix an natum.
+            </p>
+          </div><div class="card">
+            <ImagePicture item={Info} alt="card icon" />
+            <h3>Penalty Recovery</h3>
+            <p>
+              Maecenas elementum sapien in metus placerat finibus. Lorem ipsum
+              dolor sit amet, vix an natum.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bg"></div>
+    </div>
+    <div class="fourth-section">
+      <div class="container">
+        <h6>pricing</h6>
+        <h2>The Best Solutions for Our Clients</h2>
+        <div class="toggle-container">
+          <ul>
+            <li id="monthly">monthly</li>
+            <li id="yearly">Yearly</li>
+          </ul>
+        </div>
+        <div class="price-container">
+          {
+            Object.values(pricingPlans).map((plan) => (
+              <div class="pricing-card">
+                <p class="pricing-amount">
+                  <span class="monthly">${plan.monthly}</span>
+                  <span class="yearly" style="display:none">
+                    ${plan.yearly}
+                  </span>
+                  <svg
+                    class="pricing-deco-img"
+                    enable-background="new 0 0 300 100"
+                    height="100px"
+                    id="Layer_1"
+                    preserveAspectRatio="none"
+                    version="1.1"
+                    viewBox="0 0 300 100"
+                    width="300px"
+                    x="0px"
+                    xml:space="preserve"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
+                    y="0px"
+                  >
+                    <path
+                      class="deco-layer deco-layer--1"
+                      d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729
+	c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z"
+                      fill="#FFFFFF"
+                      opacity="0.6"
+                    />
+                    <path
+                      class="deco-layer deco-layer--2"
+                      d="M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729
+	c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z"
+                      fill="#FFFFFF"
+                      opacity="0.6"
+                    />
+                    <path
+                      class="deco-layer deco-layer--3"
+                      d="M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716
+	H42.401L43.415,98.342z"
+                      fill="#FFFFFF"
+                      opacity="0.7"
+                    />
+                    <path
+                      class="deco-layer deco-layer--4"
+                      d="M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428
+	c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z"
+                      fill="#FFFFFF"
+                    />
+                  </svg>
+                </p>
+                <h3 class="pricing-header">{plan.name}</h3>
+
+                <ul>
+                  {plan.features.map((feature) => (
+                    <li>{feature}</li>
+                  ))}
+                </ul>
+                <Button title="get started" link="#" />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <Logos />
+  </section>
+</OtherPages>
+
+<style>
+  .container {
+    h2 {
+      font-size: 28px;
+      color: var(--blue);
+      font-weight: bold;
+      max-width: 540px;
+      margin-bottom: 1rem;
+      @media (max-width: 810px) {
+        max-width: 100%;
+      }
+    }
+
+    h6 {
+      font-size: 15px;
+      background-color: var(--green);
+      width: max-content;
+      margin-bottom: 1em;
+      padding: 5px 20px;
+      color: #fff;
+      border-radius: 30em;
+    }
+
+    h4 {
+      font-size: 18px;
+      margin-top: 10px;
+      margin-bottom: 1rem;
+    }
+  }
+  .first-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3em;
+    align-items: center;
+    margin: 3rem auto;
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3em;
+      width: 100%;
+      align-items: center;
+    }
+    a {
+      background-color: var(--blue);
+      margin-top: 2rem;
+    }
+
+    .content-container {
+      @media (max-width: 810px) {
+        padding: 0 2em;
+      }
+      .bar {
+        margin: 20px 0;
+      }
+
+      p {
+        max-width: 540px;
+        margin-bottom: 1em;
+        color: var(--grey);
+        font-size: 14px;
+
+        @media (max-width: 810px) {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  .second-section {
+    margin-top: 15%;
+    h6,
+    h2 {
+      margin-inline: auto;
+      text-align: center;
+    }
+  }
+
+  .conference-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    .conference {
+      h2 {
+        text-align: left;
+        font-size: 15px;
+      }
+
+      .conference-details {
+        margin-top: 1rem;
+
+        span {
+          font-size: 13px;
+          text-transform: capitalize;
+        }
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .filter {
+    .btn-container {
+      width: max-content;
+      margin-inline: auto;
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      .filter-btn {
+        font-size: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px 25px;
+        border-radius: 300px;
+        transition: all ease-in-out 0.25s;
+
+        &:hover {
+          background-color: var(--green);
+          color: #fff;
+        }
+      }
+      .active {
+        background-color: var(--green);
+        color: #fff;
+      }
+    }
+  }
+
+  .third-section {
+    margin: 5% auto;
+    padding: 10% 0;
+    background: url("./images/bg.jpg") no-repeat center center / cover;
+    position: relative;
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+
+      .col {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .col2 {
+        padding: 10% 0;
+      }
+
+      .col1 {
+        align-items:;
+        justify-content: center;
+      }
+    }
+
+    h4 {
+      font-size: 2.5rem !important;
+      font-weight: bold;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 300px;
+      text-align: center;
+
+      h3 {
+        margin-top: 1rem;
+        margin-bottom: 15px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+
+    .footer-bg {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: url("./images/clouds.png");
+      background-repeat: repeat;
+      background-position: 0 0;
+      background-size: auto 100%;
+      width: 100%;
+      height: 200px;
+      animation: animatedBg 300s linear infinite;
+      content: "";
+    }
+
+    @keyframes animatedBg {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -10000px 0;
+      }
+    }
+  }
+
+  .fourth-section {
+    .toggle-container ul {
+      display: flex;
+      gap: 1rem;
+      margin-inline: auto;
+      width: max-content;
+      margin-bottom: 3rem;
+
+      li {
+        padding: 10px 3rem;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all ease-in-out 0.25s;
+        box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
+        text-transform: capitalize;
+        font-weight: bold;
+      }
+
+      .active {
+        background-color: var(--green);
+        color: #fff;
+      }
+    }
+    h6,
+    h2 {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .price-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+
+      .pricing-card {
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
+        overflow: hidden;
+        padding-bottom: 3rem;
+      }
+
+      .pricing-amount {
+        padding: 5rem 0 10rem 0;
+        background-color: var(--blue);
+        margin-bottom: 2rem;
+        position: relative;
+
+        &:hover {
+          .deco-layer--2 {
+            transform: translate3d(-15px, 0, 0);
+          }
+
+          .deco-layer--1 {
+            transform: translate3d(15px, 0, 0);
+          }
+        }
+        span {
+          color: #fff;
+          width: max-content;
+          font-size: 4rem;
+          font-weight: bold;
+          margin-bottom: 1rem;
+          margin-inline: auto;
+          display: block;
+        }
+        .pricing-deco-img {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          left: 0;
+
+          .deco-layer {
+            transition: transform 0.5s;
+          }
+        }
+      }
+
+      h3 {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        text-align: center;
+        li {
+          font-weight: 300;
+          margin-bottom: 5px;
+        }
+      }
+
+      a {
+        margin-inline: auto;
+        display: block;
+        margin-top: 2rem;
+        background-color: #e3e3e3;
+      }
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterList = document.querySelector(".filter");
+    const filterButtons = filterList?.querySelectorAll(".filter-btn");
+    const conferences = document.querySelectorAll(".conference");
+    const monthlyBtn = document.getElementById("monthly");
+    const yearlyBtn = document.getElementById("yearly");
+    const month = document.getElementsByClassName("monthly");
+    const year = document.getElementsByClassName("yearly");
+    let conferenceIndex = 0;
+
+    monthlyBtn?.addEventListener("click", () => {
+      togglePricingYearly();
+      monthlyBtn.classList.add("active");
+      yearlyBtn.classList.remove("active");
+    });
+
+    yearlyBtn?.addEventListener("click", () => {
+      // Update the display accordingly
+      togglePricing(); // Update the display accordingly
+      yearlyBtn.classList.add("active");
+      monthlyBtn.classList.remove("active");
+    });
+
+    conferences.forEach((conference) => {
+      conference.style.viewTransitionName = `conf-${++conferenceIndex}`;
+    });
+
+    filterButtons?.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        let confCategory = e.target.getAttribute("data-filter");
+
+        if (!document.startViewTransition) {
+          updateActiveButton(e.target);
+          filterEvents(confCategory);
+        }
+
+        document.startViewTransition(() => {
+          updateActiveButton(e.target);
+          filterEvents(confCategory);
+        });
+      });
+    });
+
+    function updateActiveButton(newButton) {
+      filterList.querySelector(".active").classList.remove("active");
+      newButton.classList.add("active");
+    }
+
+    function filterEvents(filter) {
+      conferences.forEach((conference) => {
+        // get each conferences category
+        let eventCategory = conference.getAttribute("data-category");
+
+        // check if that category matches with the filter
+        if (filter === "all" || filter === eventCategory) {
+          conference.removeAttribute("hidden");
+        } else {
+          conference.setAttribute("hidden", "");
+        }
+      });
+    }
+
+    function togglePricing() {
+      console.log(month);
+      for (const monthly of month) {
+        if (monthly.style.length === 0 && monthly.style.display === "none") {
+          monthly.style.display = "block";
+        } else {
+          monthly.style.display = "none";
+          for (const yearly of year) {
+            yearly.style.display = "block";
+          }
+        }
+      }
+    }
+
+    function togglePricingYearly() {
+      for (const yearly of year) {
+        if (yearly.style.length === 0 && yearly.style.display === "none") {
+          yearly.style.display = "block";
+        } else {
+          yearly.style.display = "none";
+          for (const monthly of month) {
+            monthly.style.display = "block";
+          }
+        }
+      }
+    }
+  });
+</script>
