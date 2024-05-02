@@ -1,0 +1,81 @@
+---
+import SEO from "./images/services_img_01.png";
+import ImagePicture from "../../components/ImagePicture.astro";
+import Form from "../../components/Form.astro";
+---
+
+<div class="contact-info">
+  <div class="container">
+    <div class="col">
+      <h6>analysis</h6>
+      <h3>Get Free SEO Analysis?</h3>
+      <Form />
+    </div>
+    <div class="con"><ImagePicture alt="seo image" item={SEO} /></div>
+  </div>
+</div>
+
+<style>
+  .contact-info {
+    margin: 10% 0;
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3em;
+      align-items: center;
+    }
+
+    h6 {
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--grey);
+    }
+
+    form {
+      margin-bottom: 1em;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 3rem;
+
+      input {
+        box-sizing: border-box;
+      }
+      #name {
+        width: 15em;
+        border-radius: 30em;
+        border: none;
+        padding: 10px;
+        border: 1px solid #e3e3e3;
+        width: 100%;
+      }
+
+      #email {
+        width: 15em;
+        border-radius: 30em;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #e3e3e3;
+        margin-bottom: 1em;
+      }
+
+      .styled {
+        padding: 10px 25px;
+        border-radius: 30em;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+
+        @media (max-width: 500px) {
+          margin: 0;
+        }
+      }
+    }
+  }
+</style>
