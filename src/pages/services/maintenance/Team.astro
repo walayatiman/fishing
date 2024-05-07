@@ -1,0 +1,96 @@
+---
+import Button from "../../../components/Button.astro";
+import Profile from "./Profile.astro";
+import Angela from "./images/Angela-Long.jpg";
+import Dan from "./images/Dan_Brake.jpg";
+import Sandra from "./images/Sandra-Willson.jpg";
+import Victor from "./images/Victor-Liuw.jpg";
+---
+
+<section id="team">
+  <div class="container">
+    <div class="meta">
+      <div class="meta-content">
+        <h6>our team</h6>
+        <h2>Our Professionals</h2>
+        <p>
+          Ne summo dictas pertinacia nam. Illum cetero vocent ei vim, case
+          regione signiferumque vim te.
+        </p>
+      </div>
+      <div class="btn-container"><Button link="#" title="join team" /></div>
+    </div>
+    <div class="team-container">
+      <Profile
+        title="victor law"
+        subtitle="general manager"
+        fb="#"
+        tw="#"
+        li="#"
+        image={Victor}
+      />
+      <Profile
+        title="dan brake"
+        subtitle="senior digital strategist"
+        fb="#"
+        tw="#"
+        li="#"
+        image={Dan}
+      /><Profile
+        title="angela long"
+        subtitle="managing director"
+        fb="#"
+        tw="#"
+        li="#"
+        image={Angela}
+      />
+      <Profile
+        title="sandra wilson"
+        subtitle="COO"
+        fb="#"
+        tw="#"
+        li="#"
+        image={Sandra}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5%;
+
+    a {
+      background-color: var(--blue);
+    }
+
+    .meta-content {
+      max-width: 30rem;
+
+      h6 {
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: var(--blue);
+      }
+
+      p {
+        font-weight: 100;
+      }
+    }
+  }
+
+  .team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+</style>

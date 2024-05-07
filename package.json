@@ -17,7 +17,9 @@
     "astro": "^4.0.7",
     "astro-robots-txt": "^1.0.0",
     "gsap": "^3.12.4",
+    "modal-video": "^2.4.8",
     "scrolltrigger": "^1.0.1",
+    "swiper": "^11.1.1",
     "typescript": "^5.3.3"
   }
 }

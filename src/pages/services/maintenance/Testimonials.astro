@@ -1,0 +1,54 @@
+---
+
+---
+
+<section id="testimonials">
+  <div class="clouds"></div>
+  <div class="container">
+    <h5>testimonials</h5>
+    <h3>What Our Client’s Say</h3>
+  </div>
+</section>
+
+<style>
+  #testimonials {
+    background-color: #f9f8ff;
+    position: relative;
+
+    .clouds {
+      background-image: url("./images/clouds.png");
+      position: absolute;
+      width: 100%;
+      height: 200px;
+      background-repeat: repeat;
+      top: 0;
+      left: 0;
+      background-position: 0 0;
+      background-size: auto 100%;
+      animation: animatedBg 300s linear infinite;
+    }
+  }
+
+  @keyframes animatedBg {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -10000px 0;
+    }
+  }
+  .container {
+    padding-top: 15%;
+    padding-bottom: 5%;
+    text-align: center;
+
+    h5 {
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
+</style>

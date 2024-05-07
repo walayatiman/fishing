@@ -1,0 +1,152 @@
+---
+import Button from "../../../components/Button.astro";
+import ImagePicture from "../../../components/ImagePicture.astro";
+import Chart from "./images/about_new.jpg";
+---
+
+<section id="about-us">
+  <div class="container">
+    <div class="col col-1">
+      <h6>about us</h6>
+      <h3>Boosts Your Website Traffic!</h3>
+      <p>
+        Ad nec unum copiosae. Sea ex everti labores, ad option iuvaret qui muva.
+        Ea pro tibique comprehensam, sed ea verear numquam molestie. Nam te
+        omittam comprehensam. Ne nam nonumy putent fuisset, reque fabulas usu
+        ne. Ex vel populo appellantur. Eos ne delenit admodum.
+      </p>
+      <Button title="our services" link="#" />
+    </div>
+    <div class="col col-2">
+      <ImagePicture item={Chart} alt="seo chart" />
+      <div class="pulse-container">
+        <button class="js-modal-btn" data-video-id="dQw4w9WgXcQ">
+          <span class="pulse-button">
+            <svg class="svg-icon" viewBox="0 0 20 20">
+              <path
+                d="M12.522,10.4l-3.559,3.562c-0.172,0.173-0.451,0.176-0.625,0c-0.173-0.173-0.173-0.451,0-0.624l3.248-3.25L8.161,6.662c-0.173-0.173-0.173-0.452,0-0.624c0.172-0.175,0.451-0.175,0.624,0l3.738,3.736C12.695,9.947,12.695,10.228,12.522,10.4 M18.406,10c0,4.644-3.764,8.406-8.406,8.406c-4.644,0-8.406-3.763-8.406-8.406S5.356,1.594,10,1.594C14.643,1.594,18.406,5.356,18.406,10M17.521,10c0-4.148-3.374-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.147,17.521,17.521,14.147,17.521,10"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3em;
+    margin-top: 10%;
+
+    .col-1 {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+      h6 {
+        text-transform: uppercase;
+      }
+
+      h3 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--grey);
+      }
+
+      a {
+        margin: 2rem 0;
+        background-color: var(--grey);
+      }
+    }
+
+    .col {
+      position: relative;
+    }
+  }
+
+  .pulse-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      fill: #fff;
+    }
+  }
+
+  .pulse-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: block;
+    width: 100px;
+    height: 100px;
+    font-size: 1.3em;
+    font-weight: light;
+    font-family: "Trebuchet MS", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 100px;
+    letter-spacing: -1px;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    background: var(--blue);
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(40, 75, 99, 0.5);
+    animation: pulse 1.5s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @keyframes pulse {
+    0% {
+      -moz-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+    70% {
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+    }
+    100% {
+      -moz-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+      box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+    }
+  }
+
+  .js-modal-btn {
+    background: transparent;
+    border: none;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+  }
+</style>
+
+<script>
+  import ModalVideo from "modal-video";
+  document.addEventListener("DOMContentLoaded", function () {
+    new ModalVideo(".js-modal-btn");
+  });
+</script>
