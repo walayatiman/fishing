@@ -4,7 +4,13 @@ const { item, alt } = Astro.props;
 ---
 
 <div class="picture-container">
-  <Picture src={item} formats={["avif", "webp"]} alt={alt} />
+  {
+    item ? (
+      <Picture src={item} formats={["avif", "webp"]} alt={alt} />
+    ) : (
+      <p>no item</p>
+    )
+  }
 </div>
 
 <style>
