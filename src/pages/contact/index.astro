@@ -1,0 +1,315 @@
+---
+import OtherPages from "../Layouts/OtherPages.astro";
+import Header from "../../components/Header.astro";
+import email from "./images/email.png";
+import ideao from "./images/idea.png";
+import internet from "./images/internet.png";
+import ImagePicture from "../../components/ImagePicture.astro";
+import Form from "../../components/Form.astro";
+import uk from "./images/uk.webp";
+import france from "./images/france.webp";
+import canada from "./images/canada.webp";
+---
+
+<OtherPages title="Contact Us">
+  <Header title="Contact Us" />
+  <section id="contact">
+    <div class="container">
+      <div class="info">
+        <div class="card">
+          <ImagePicture item={email} alt="contact icon" />
+          <h3>How can we help you?</h3>
+          <p>Send us an email</p>
+        </div>
+        <div class="card">
+          <ImagePicture item={ideao} alt="contact icon" />
+          <h3>Feel free to get in touch?</h3>
+          <p>Give us a call toady</p>
+        </div>
+        <div class="card">
+          <ImagePicture item={internet} alt="contact icon" />
+          <h3>Ready to request a quote?</h3>
+          <p>Describe your project</p>
+        </div>
+      </div>
+      <div class="contact-container container">
+        <h6>Fill out the form and we'll be in touch soon!</h6>
+        <h3>How we can help you?</h3>
+        <Form />
+      </div>
+    </div>
+    <div class="offices">
+      <div class="overlay"></div>
+      <div class="container">
+        <h6>Fill out the form and we'll be in touch soon!</h6>
+        <h3>Litho offices around the world</h3>
+        <div class="office-cards">
+          <div class="office">
+            <div class="location">
+              <ImagePicture item={uk} alt="flag" />
+              <h4>UK - London</h4>
+            </div>
+            <div class="content">
+              <p>401 Broadway, 24th Floor Orchard View, London, UK</p>
+              <strong>Phone: 123 456 7890</strong>
+              <a href="#">info@yourdomain.com</a>
+            </div>
+          </div>
+
+          <div class="office">
+            <div class="location">
+              <ImagePicture item={france} alt="flag" />
+              <h4>France - Paris</h4>
+            </div>
+            <div class="content">
+              <p>27 Eden Walk Eden Centre Orchard View, Paris, France</p>
+              <strong>Phone: 123 456 7890</strong>
+              <a href="#">info@yourdomain.com</a>
+            </div>
+          </div>
+
+          <div class="office">
+            <div class="location">
+              <ImagePicture item={canada} alt="flag" />
+              <h4>Canada - Toronto</h4>
+            </div>
+            <div class="content">
+              <p>523 North Stockport Road Canal Bridge, Toronto, Canada</p>
+              <strong>Phone: 123 456 7890</strong>
+              <a href="#">info@yourdomain.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="contact-info-container">
+        <h3>Connect with social media</h3>
+        <div class="divider"></div>
+        <ul class="contact-info"></ul>
+      </div>
+    </div>
+    <div id="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387194.0622236789!2d-74.30932477148002!3d40.69701929469058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sph!4v1715179603075!5m2!1sen!2sph"
+        width="100%"
+        height="600"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+</OtherPages>
+
+<style>
+  .info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 3rem;
+    margin-top: 5%;
+
+    .card {
+      border: 1px solid #e3e3e3;
+      padding: 2rem;
+      border-radius: 15px;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      img {
+        max-width: 50px;
+        margin-inline: auto;
+      }
+
+      h3 {
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        font-weight: bold;
+        color: var(--green);
+      }
+
+      p {
+        text-align: center;
+        color: var(--blue);
+        font-size: 14px;
+        border-bottom: 1px solid var(--blue);
+        width: max-content;
+        margin-inline: auto;
+      }
+    }
+  }
+  .contact-container {
+    text-align: center;
+    margin-top: 5%;
+
+    h6 {
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--blue);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 650px;
+      margin-inline: auto;
+      margin-top: 5%;
+
+      input {
+        margin-bottom: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 5px;
+
+        &:focus-visible {
+          outline: var(--green);
+        }
+
+        &:focus-within {
+          outline: var(--blue);
+        }
+      }
+
+      button {
+        margin-top: 10px;
+        border: none;
+        padding: 10px 0;
+        background-color: var(--green);
+        color: #fff;
+        transition: all ease-in-out 0.25s;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  .offices {
+    margin-top: 5%;
+    padding: 5rem 0;
+    background-image: url("./images/office.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    .container {
+      text-align: center;
+      color: #fff;
+
+      h3 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--blue);
+      }
+
+      .office-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 3rem;
+        margin-top: 3%;
+
+        .office {
+          background-color: var(--blue);
+          color: #fff;
+          padding: 5rem 2rem;
+          border-radius: 15px;
+        }
+
+        img {
+          max-width: 35px;
+        }
+
+        .location {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+
+          .picture-container {
+            width: max-content;
+          }
+        }
+
+        .content {
+          margin-top: 20px;
+
+          * {
+            margin-bottom: 10px;
+          }
+
+          a {
+            color: var(--gray-light);
+            margin-top: 15px;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .contact-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 5% 0;
+    h3 {
+      width: max-content;
+      font-size: 2rem;
+    }
+
+    .divider {
+      width: 10em;
+      position: relative;
+      padding-top: 1rem;
+      border-bottom: 1px solid #1e1e1e;
+      margin-bottom: 1rem;
+    }
+    .contact-info {
+      display: flex;
+      gap: 1rem;
+
+      a {
+        color: var(--blue);
+      }
+
+      li {
+        transition: all ease-in-out 0.25s;
+        &:hover {
+          transform: translateY(-5px);
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const social = document.querySelector(".social-links")?.children;
+    const contactInfo = document.getElementsByClassName("contact-info")[0];
+    if (social) {
+      for (let el of social) {
+        const clonedElement = el.cloneNode(true);
+        contactInfo.appendChild(clonedElement);
+      }
+    }
+  });
+</script>
