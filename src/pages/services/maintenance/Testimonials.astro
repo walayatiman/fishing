@@ -1,5 +1,9 @@
 ---
-
+import ImagePicture from "../../../components/ImagePicture.astro";
+import first from "./images/1.jpg";
+import second from "./images/2.jpg";
+import thrid from "./images/3.jpg";
+import fourth from "./images/4.jpg";
 ---
 
 <section id="testimonials">
@@ -11,16 +15,62 @@
     <div class="swiper-container">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
-          <div class="swiper-slide">Slide 4</div>
-          <div class="swiper-slide">Slide 5</div>
-          <div class="swiper-slide">Slide 6</div>
-          <div class="swiper-slide">Slide 7</div>
-          <div class="swiper-slide">Slide 8</div>
-          <div class="swiper-slide">Slide 9</div>
+          <div class="swiper-slide">
+            <ImagePicture item={first} alt="profile picture" />
+            <p>
+              Working with this marketing team has been a game changer for Blue
+              Horizon Charters. Their strategic approach to digital marketing
+              has not only increased our bookings by 40% but has also enhanced
+              our online presence significantly. They truly understand the niche
+              market of fishing charters and have tailored their strategies to
+              align perfectly with our business goals. I couldn't be more
+              thrilled with the results!
+            </p>
+            <h4>Samantha H., Owner of Blue Horizon Charters</h4>
+          </div>
+          <div class="swiper-slide">
+            <ImagePicture item={second} alt="profile picture" />
+            <p>
+              I was initially skeptical about investing in specialized marketing
+              services, but this agency proved me wrong. Their comprehensive
+              understanding of the fishing industry and what drives anglers to
+              book trips is outstanding. They revamped our website, managed our
+              SEO, and handled our social media platforms, leading to a
+              noticeable increase in both new and repeat customers. Highly
+              recommend their services to anyone looking to boost their charter
+              business.
+            </p>
+            <h4>Derek T., Captain of Reel Adventure Fishing</h4>
+          </div>
+          <div class="swiper-slide">
+            <ImagePicture item={thrid} alt="profile picture" />
+            <p>
+              As a relatively new player in a competitive market, getting
+              noticed was our biggest challenge. This marketing agency helped us
+              cut through the noise with a brilliant brand strategy and robust
+              marketing campaigns. Their creative use of engaging content and
+              targeted ads has helped us establish a strong brand presence and
+              increase our charter bookings exponentially. Their team is
+              passionate, professional, and truly goes the extra mile.
+            </p>
+            <h4>Melissa R., Co-Founder of Aquatic Escapes</h4>
+          </div>
+          <div class="swiper-slide">
+            <ImagePicture item={fourth} alt="profile picture" />
+            <p>
+              From the very first consultation, it was clear that this agency
+              was different. They offered a clear, data-driven strategy to
+              increase our visibility and attract more clients. Thanks to their
+              efforts, we've seen a steady increase in both inquiries and
+              bookings, and our Google rankings have never been better. Their
+              ongoing support and insights continue to be invaluable as we grow
+              our business. This team isn’t just about promises—they deliver!
+            </p>
+            <h4>Brian W., Owner of Epic Tides Charters</h4>
+          </div>
         </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
     </div>
   </div>
@@ -68,39 +118,43 @@
     }
   }
 
-  .swiper {
-    width: 600px;
-    height: 300px;
+  .swiper-container {
+    margin-top: 5%;
+    .swiper-slide {
+      img {
+        border-radius: 300px;
+        max-width: 100px;
+        max-height: 100px;
+        object-fit: cover;
+        margin-inline: auto;
+      }
+
+      p {
+        max-width: 40rem;
+        margin-inline: auto;
+        padding: 3% 0;
+      }
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: var(--blue);
   }
 </style>
 
 <script>
   import Swiper from "swiper";
-  import { Navigation, Pagination } from "swiper/modules";
-  // import Swiper and modules styles
   import "swiper/css";
   import "swiper/css/navigation";
   import "swiper/css/pagination";
-
-  const swiper = new Swiper(".swiper", {
-    // Optional parameters
-    direction: "horizontal",
-    loop: true,
-
-    // If we need pagination
-    pagination: {
-      el: ".swiper-pagination",
-    },
-
-    // Navigation arrows
+  import { Navigation, Pagination } from "swiper/modules";
+  var swiper = new Swiper(".mySwiper", {
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
-
-    // And if we need scrollbar
-    scrollbar: {
-      el: ".swiper-scrollbar",
-    },
+    loop: true,
+    modules: [Navigation, Pagination],
   });
 </script>
